@@ -1,0 +1,301 @@
+﻿*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html,body{
+scroll-behavior:smooth;
+height:100%;
+font-family:Helvetica;
+}
+
+/* empieza estilo de inicio */
+#inicio nav{
+overflow:auto;
+background-color:#333;
+position:fixed;
+top:0;
+width:100%;
+z-index:2;
+}
+#inicio nav a{
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+#inicio #login{
+	float:right; 
+	font-size:120%;
+}
+
+#inicio nav a:hover{
+background:#ddd;
+color:black;
+}
+/* termina estilo de inicio */
+
+
+/* inicia estilo de home */
+#home{
+margin-top:7%;
+font-family:Helvetica;
+display:block;
+heigh:100%;	
+}
+.bg-image{
+background-image: url("prepa3-logo.jpg");
+	/* efecto blur
+	filter:blur(8px);
+	-webkit-filter: blur(8px);*/
+height:100%;
+background-attachment:fixed; /*se añade efecto "parallax" con esta linea*/
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.bg-text{
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(137,16,38, 0.9); /* Black w/opacity/see-through */
+color: white;
+font-weight: bold;
+border: 3px solid #f1f1f1;
+display:block;
+float:center;
+margin:20px;
+padding: 20px;
+text-align: center;
+}
+.bg-text a{
+	text-decoration:none;
+	color:white;
+}
+.bg-text a:hover{
+	background-color: rgba(0,0,0, 0.9);
+}
+
+/* termina estilo de home */
+	
+/* inicia estilo de taes */
+#taes{
+	display:block;
+	background-color:#750321;
+	width:100%;
+	height:auto;
+	padding:10px;
+	color:white;
+	
+}
+#taes p{
+	margin-top:4%;
+	text-align:center;
+	font-size:32px;
+}
+#taes div{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	grid-template-rows:1fr 1fr;
+	align-content:stretch;
+	justify-content:center;
+	text-align:center;
+	overflow:auto;
+}
+#taes a{
+	display:block;
+	margin:20px;
+	min-height:50%;
+	height:auto;
+	width:80%;
+	padding:16px;
+	text-align:center;
+	text-decoration:none;
+	color:black;
+	border: 1px solid black;
+	background-color:#eaeaea;/*gris para los botones*/
+	overflow:visible;
+}
+#taes a:hover{
+	background-color:#fbfbfb;/*gris para los botones*/
+}
+#taes a:active{
+	background-color:#c8c8c8;/*gris para los botones*/
+}
+
+/* termina estilo de taes */
+
+/*empiezan breves estilos generales*/
+body button{
+	padding:10px;
+	border:none;
+	background-color:#eae8e8;
+	border:1px solid black;
+}
+body button:hover{
+	background-color:#b7a8c4;
+}
+body button:active{
+	background-color:#740ed3;
+}
+section{
+	padding-top:4%;
+	padding-left:10%;
+	padding-right:2%;
+	padding-bottom:2%;
+	width:100%;
+	height:auto;
+	min-height:400px;
+	display:block;
+	color:white;
+	background-color:black;
+}
+section button{
+	display:relative;
+	
+}
+section article{
+	display:inline-grid;
+	float:center;
+	margin:10px;
+	padding:10px;
+	border:solid 2px blue;
+	height:35%;
+	width:20%;
+	background-color:white;
+	color:black;
+	border-radius:10px;
+	text-align:center;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+.modal-contenido {
+  position:relative;
+  top:17%;
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  max-width: 50%;
+  max-height:70%;
+  padding:20px;
+  padding-left:10%;
+  border-radius:15px;
+}
+.modal-contenido table{
+	border:solid 1px black;
+	padding:10px;
+}
+.modal-contenido table input, button, select, option{
+	border-radius:10px;
+}
+.close {
+  display:block;
+  float:right;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+.close:hover, .close:focus {
+  color: red;
+  cursor: pointer;
+}
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+.corto{
+height:300px;
+background-attachment:fixed;/*se añade efecto "parallax" esta linea linea*/
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+#fondo-taes1{
+background-image: url("p3_1.jpg");
+}
+#fondo-taes2{
+background-image: url("p3_3.jpg");
+}
+/*terminan breves estilos generales*/
+
+/*empieza estilo de salud_cnat*/
+#salud_cnat hr{
+	height:10px;
+	background-color:green;
+	border:none;
+}
+/*termina estilo de salud_cnat*/
+
+/*empieza estilo de humm_soc*/
+#humm_soc hr{
+	height:10px;
+	background-color:blue;
+	border:none;
+	}
+/*termina estilo de humm_soc*/
+
+/*empieza estilo de mates*/
+#mates hr{
+	height:10px;
+	background-color:red;
+	border:none;
+}
+/*termina estilo de mates*/
+
+/*empieza estilo de comm*/
+#comm hr{
+	height:10px;
+	background-color:orange;
+	border:none;
+}
+/*termina estilo de comm*/
+
+/*empieza estilo de sociotec*/
+#sociotec hr{
+	height:10px;
+	background-color:rgb(255,0,255);
+	border:none;
+}
+/*termina estilo de sociotec*/
+
+/* ******************************** */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
