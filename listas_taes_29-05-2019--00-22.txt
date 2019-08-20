@@ -1,0 +1,13 @@
+﻿//Cada TAE tiene su registro correspondiente a cada turno <en la tabla 'alumnos_taes' y
+'frances_mat','frances_vesp',
+'proyectempr_mat','proyectempr_vesp',
+'politic_mat','politic_vesp',
+'danzco_mat','danzco_vesp',
+'danzfolc_mat','danzfolc_vesp',
+'teatro_mat','teatro_vesp',
+'musica_mat','musica_vesp',
+'su_mat_mat','su_mat_vesp',
+'proteccivil_mat','proteccivil_vesp',
+'gestsalud_mat','gestsalud_vesp',
+'electr_res_mat','electr_res_vesp',
+'robot_mat','robot_vesp'
