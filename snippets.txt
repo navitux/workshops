@@ -81,4 +81,14 @@ $new_name = $_POST['add_alumno_nombre'];
 			Cambios realizados: '.mysql_affected_rows().'</div>'.
 			'<script>function logsty() { document.getElementById("msj_cambios").style.display=\'none\'}</script>';
 	
-	
+	//seleccionar la base de datos:
+/*VARIABLES USADAS EN EL ENTORNO, USADAS PARA LOGIN 
+$servidor       = "localhost";
+$usuario        = "root";
+$clave          = "";
+
+$basedatos      = "taes";
+
+
+$enlace_db = mysqli_connect($servidor,$usuario,$clave);
+mysqli_select_db($enlace_db ,$basedatos) or die('No se pudo seleccionar la base de datos');*/
