@@ -90,11 +90,11 @@ bottom:0;
   <div id="fondo-login"></div>
 	<section id="login">
 		<!--Cabecera de la página-->
-<<<<<<< HEAD
+
 		<header id="titulo"><h1>Control de TAEs/TALLERES</h1></header>
-=======
+
 		<header id="titulo"><h1>Control de TAEs</h1></header>
->>>>>>> 98b708b73510bb474d6e55c008b47f6a26ecf416
+
 		<form method="post" action="motor-login.php">
 			<table>
 			<tr>
