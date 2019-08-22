@@ -16,7 +16,7 @@ $_SESSION["timeout"] = time();
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="homs_style.css" media="all"/>
-	<title>TAEs Prepa 3</title>
+	<title>taes/talleres Prepa 3</title>
 <script src="jquery-3.4.1.min.js"></script>
 <script language="JavaScript">
 	setTimeout("alert('se cierra sesión por inactividad')", 3200000);
@@ -54,7 +54,7 @@ $user_ingresado = $_SESSION["nombre"];
 $servidor       = "localhost";
 $usuario        = "root";
 $clave          = "";
-$basedatos      = "taes";
+$basedatos      = "taes/talleres";
 $enlace_db = mysqli_connect($servidor,$usuario,$clave);
 mysqli_select_db($enlace_db ,$basedatos) or die('No se pudo seleccionar la base de datos');*/
 $enlace_db = conectar();
@@ -229,7 +229,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 		<span onclick="document.getElementById('edit_tae_modal').style.display='none'" class="close" title="Cerrar">&times;</span>
 		<table>
 			<tr>
-				<td style="text-align:center;"><h1><b>Editar Datos de TAEs:</b></h1></td>
+				<td style="text-align:center;"><h1><b>Editar Datos de taes/talleres:</b></h1></td>
 			</tr>
 		</table>
 		<!-- FORMULARIO "AÑADIR TAE"-->
@@ -327,7 +327,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 						//Aquí se consulta la tabla con el nombre obtenido anteriormente y además se ponen en cada iteración como una opción a elegir.
 						$dime_taes = mysqli_query($enlace_db,"SELECT nombre_formal FROM ".$cad_listar_dept_corto[0]);
 						while ($cad_dime_taes = mysqli_fetch_row($dime_taes)){
-							//$cad_dime_taes[0] = utf8_encode($cad_dime_taes[0]);
+							//$cad_dime_taes/talleres[0] = utf8_encode($cad_dime_taes/talleres[0]);
 							echo "<option value='DELETE FROM ".$cad_listar_dept_corto[0]." WHERE nombre_formal = \"".$cad_dime_taes[0]."\"'>".$cad_dime_taes[0]."</option>";
 						}
 						echo "</optgroup>";
@@ -381,17 +381,17 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 						//Aquí se consulta la tabla con el nombre obtenido anteriormente y además se ponen en cada iteración como una opción a elegir.
 						$dime_taes = mysqli_query($enlace_db,"SELECT nombre_formal FROM ".$cad_listar_dept_corto[0]);
 						while ($cad_dime_taes = mysqli_fetch_row($dime_taes)){
-							//$cad_dime_taes[0] = utf8_encode($cad_dime_taes[0]);
-							echo "<option value='".$cad_listar_dept_corto[0]." ".$cad_dime_taes[0]."'>".$cad_dime_taes[0]."</option>";
+							//$cad_dime_taes/talleres[0] = utf8_encode($cad_dime_taes/talleres[0]);
+							echo "<option value='".$cad_listar_dept_corto[0]." ".$cad_dime_taes."'>".$cad_dime_taes[0]."</option>";
 						}
 						echo "</optgroup>";
 					}
 				}
 				echo "</select>";
-				echo "<input name='rename_tae' type='text' placeholder='Nombre Nuevo de la TAE' size='29'></input>";
+				echo "<input name='rename_tae' type='text' placeholder='Nombre Nuevo de la TAE/Taller' size='29'></input>";
 				echo "<p><b>(Para cambiar el número de vacantes, se debe cambiar el nombre, sino, introduzca el mismo nombre anterior así solamente se actualizará el número)</b></p>";
 				echo "<input name='reset_vacantes' type='text' placeholder='Nuevo Número de Vacantes' size='29'></input>";
-				echo "<button type='submit'>Cambiar Información de TAE</button>";
+				echo "<button type='submit'>Cambiar Información de TAE/Taller</button>";
 				echo "</form>";
 				
 				$dato_sentence = $_POST['editar_nombre_tae'];
@@ -459,7 +459,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 			</tr>
 			<tr>
 				<td>TAE Perteneciente:</td>
-				<td><!--Aquí se listan toodas las TAEs que existen actualmente -->
+				<td><!--Aquí se listan toodas las taes/talleres que existen actualmente -->
 					<?php
 					echo  "<select name='add_alumno_tae' required>";
 					echo "<option></option>";
@@ -475,7 +475,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 						//Aquí se consulta la tabla con el nombre obtenido anteriormente y además se ponen en cada iteración como una opción a elegir.
 						$dime_taes = mysqli_query($enlace_db,"SELECT nombre_formal FROM ".$cad_listar_dept_corto[0]);
 						while ($cad_dime_taes = mysqli_fetch_row($dime_taes)){
-							//$cad_dime_taes[0] = utf8_encode($cad_dime_taes[0]);
+							//$cad_dime_taes/talleres[0] = utf8_encode($cad_dime_taes/talleres[0]);
 							echo "<option value='".$cad_dime_taes[0]."'>".$cad_dime_taes[0]."</option>";
 						}
 						echo "</optgroup>";
@@ -500,7 +500,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 	$new_alumn_tae = $_POST['add_alumno_tae'];
 	//echo $new_name." ".$new_lastname." ".$new_mail." ".$new_tel." ".$new_alumn_num." ".$new_alumn_tae;
 	if(isset($new_name)){
-		mysqli_query($enlace_db,"INSERT INTO `alumnos_taes`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`) 
+		mysqli_query($enlace_db,"INSERT INTO `alumnos_taes/talleres`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`) 
 		VALUES ('".$new_lastname."', 
 				'".$new_name."', 
 				'".$new_alumn_num."',
@@ -534,11 +534,11 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 			</tr>
 			<tr>
 				<td style="text-align:right;">Alumno:</td>
-				<td><!--Aquí se listan toodas las TAEs que existen actualmente -->
+				<td><!--Aquí se listan toodas las taes/talleres que existen actualmente -->
 					<?php
 					echo  "<select name='alumno_name' required>";
 					echo "<option></option>";
-					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes");
+					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes/talleres");
 					$m = mysqli_num_rows($listar_alumnos);
 					if ($m > 0) {
 						while($cad_listar_alumnos = mysqli_fetch_row($listar_alumnos)){
@@ -580,7 +580,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 		$nuevo_dato = $_POST['param_nuevo'];
 		if(isset($nombre_alumno_a_modificar)){
 			$dato_cortado = explode('&#&',$nombre_alumno_a_modificar);
-			$cambio_sentence = "UPDATE alumnos_taes SET ".$param_viejo_a_mover." ='".$nuevo_dato."' WHERE apellido ='".$dato_cortado[0]."' AND nombre ='".$dato_cortado[1]."'";
+			$cambio_sentence = "UPDATE alumnos_taes/talleres SET ".$param_viejo_a_mover." ='".$nuevo_dato."' WHERE apellido ='".$dato_cortado[0]."' AND nombre ='".$dato_cortado[1]."'";
 			echo $nombre_alumno_a_modificar."<br>";
 			echo $param_viejo_a_mover."<br>";
 			echo $nuevo_dato."<br>";
@@ -606,11 +606,11 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 			</tr>
 			<tr>
 				<td style="text-align:right;">Alumno:</td>
-				<td><!--Aquí se listan toodas las TAEs que existen actualmente -->
+				<td><!--Aquí se listan toodas las taes/talleres que existen actualmente -->
 					<?php
 					echo  "<select name='alumno_deleted' required>";
 					echo "<option></option>";
-					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes");
+					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes/talleres");
 					$m = mysqli_num_rows($listar_alumnos);
 					if ($m > 0) {
 						while($cad_listar_alumnos = mysqli_fetch_row($listar_alumnos)){
@@ -633,9 +633,10 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 	$alumno_deleted = $_POST['alumno_deleted'];
 	if(isset($alumno_deleted)){
 		$datas = explode('&#&', $alumno_deleted);
-		mysqli_query( $enlace_db,"DELETE FROM alumnos_taes WHERE nombre = '".$datas[1]."' AND apellido ='".$datas[0]."'");
+		mysqli_query( $enlace_db,"DELETE FROM alumnos_taes/talleres WHERE nombre = '".$datas[1]."' AND apellido ='".$datas[0]."'");
 		unset($_POST['alumno_deleted']);
 		$alumno_deleted = '';
+		header("Location: home-sudo_admin.php");
 	}
 	?>
 	<!--ELIMINAR ALUMNO FIN-->
@@ -691,7 +692,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 	}
  </script>
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
- <button id="ver_deptos" onclick="document.getElementById('ver_deptos_modal').style.display='block'" type='button' style='border:none;' title="Solamente visualizar las TAEs ordenadas por Departamentos"><img src='tabla.jpg' width='20px' height='20px'/>Ver solamente Departamentos con TAEs</button>
+ <button id="ver_deptos" onclick="document.getElementById('ver_deptos_modal').style.display='block'" type='button' style='border:none;' title="Solamente visualizar las taes/talleres ordenadas por Departamentos"><img src='tabla.jpg' width='20px' height='20px'/>Ver solamente Departamentos con taes/talleres</button>
  <div id="ver_deptos_modal" class="modal">	
 	<form class="modal-content" method="post" action="">
 		<span onclick="document.getElementById('ver_deptos_modal').style.display='none'" class="close" title="Cerrar">&times;</span>
@@ -740,7 +741,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 </section>
 
 
-<section id="taes_detalles">
+<section id="taes/talleres_detalles">
 <?php 
 	//se consultan solamente las tablas que empiezan con 'depto%' el símbolo '%' es wildcat o comodín pero sólo en SQL 
 	$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos") or die(mysqli_error());
@@ -754,8 +755,8 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 		}
 	}
 	/*Aquí se pretende crear un "article" por cada departamento existente
-       y con todas sus TAEs correspondientes, su número de vacantes actual con
-       un botón para editar las propiedades de una o más TAEs ó departamentos*/
+       y con todas sus taes/talleres correspondientes, su número de vacantes actual con
+       un botón para editar las propiedades de una o más taes/talleres ó departamentos*/
 	$nombres_formales_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos") or die(mysqli_error());
 	$n = mysqli_num_rows($nombres_formales_deptos);
 	if ($n > 0) {//Aquí se imprime cuántos departamentos haya.
@@ -764,25 +765,30 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 			echo '<br><hr style="border:2px solid #0c0030;">';
 			print "<h1>".$depto[0]."</h1>";
 			//$depto[0] = utf8_decode($depto[0]);//Esta línea es muy importante dado que se necesita devolver la cadena su codificación "original" para realizar la consulta, sino devolverá null.
-			/*A continuación se nombran las TAEs correspondientes de cada departamento
+			/*A continuación se nombran las taes/talleres correspondientes de cada departamento
 			para ello se obtiene el nombre corto de cada departamento por una consulta,
 			después de eso se consultará en la tabla del "nombre corto" de la TAE y 
-			por consiguiente se podrá ver cada departamento con TODAS sus TAEs*/
+			por consiguiente se podrá ver cada departamento con TODAS sus taes/talleres*/
 			/*EN ESTAS SIGUIENTES LÍNEAS SE HACEN CONSULTAS SQL DEL NOMBRE "CORTO" DEL DEPARTAMENTO EN CADA ITERACIÓN Y LA SIGUIENTE ES PARA
-			CONSULTAR LAS TAES (CON NOMBRE "FORMAL") DE CADA DEPARTAMENTO RESPECTIVAMENTE */
+			CONSULTAR LAS taes/talleres (CON NOMBRE "FORMAL") DE CADA DEPARTAMENTO RESPECTIVAMENTE */
 			$nombre_corto_depto = mysqli_query($enlace_db, "SELECT nombre FROM departamentos WHERE nombre_formal = '".$depto[0]."'");
 			$cad_nombre_corto_depto = mysqli_fetch_row($nombre_corto_depto); 
 			
-			/*AQUÍ ES DONDE SE EMPIEZAN A MOSTRAR TODAS LAS TAEs DE CADA DEPARTAMENTO EN CADA ITERACIÓN (UNA ITERACIÓN POR CADA DEPTO., CLARO)*/
+			/*AQUÍ ES DONDE SE EMPIEZAN A MOSTRAR TODAS LAS taes/talleres DE CADA DEPARTAMENTO EN CADA ITERACIÓN (UNA ITERACIÓN POR CADA DEPTO., CLARO)*/
 			$lista_de_taes = mysqli_query($enlace_db,"SELECT nombre_formal, vacantes_totales FROM ".$cad_nombre_corto_depto[0]);
 			//El arreglo obtenido arriba ahora se imprime en pantalla a manera de: "Nombre de TAE" con "número de vacantes":
-			echo "<table border='1' style=' float:center;'> <tr> <th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> <th style='background-color:#FF55FF; color:white;'>Vacantes disponibles:</th> </tr>";
+			echo "<table border='1' style=' float:center;'> <tr> <th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> <th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:  </th> </tr>";
 			while($cad_lista_de_taes = mysqli_fetch_row($lista_de_taes)){
-				//$cad_lista_de_taes[0] = utf8_encode($cad_lista_de_taes[0]);
-				echo "<tr><td style='width:150px; '>".$cad_lista_de_taes[0]."</td>"."<td style='text-align:center;'>".$cad_lista_de_taes[1]."</td><td style='border:none;'></td></tr>";
+				//A continuación se mostrará la cantidad de alumnos registrados al lado de las vacantes establecidas.
+				$alumno_realm_reg = mysqli_query($enlace_db,"SELECT count(tae) FROM alumnos_taes/talleres WHERE tae='".$cad_lista_de_taes[0]."'");
+				$cad_alumno_realm_reg = mysqli_fetch_row($alumno_realm_reg);
+				//$cad_lista_de_taes/talleres[0] = utf8_encode($cad_lista_de_taes/talleres[0]);
+				echo "<tr><td style='width:150px; '>".$cad_lista_de_taes[0]."</td>"."<td style='text-align:center;'>".$cad_lista_de_taes[1]."	/	".$cad_alumno_realm_reg[0]."</td><td style='border:none;'></td></tr>";
 			}
 			echo "</table>";
 			echo "<br>";
+			/*AQUÍ SE COLOCARÁ UNA LISTA POR CADA TAE/TALLER CON SUS ALUMNOS CORRESPONDIENTES:*/
+			
 			echo '<br><hr style="border:2px solid #0c0030;">';
 		}
 	}else{ echo "No hay nada"; echo "</table>";echo '<br><hr style="border:2px s0olid #0c0030;">';}
