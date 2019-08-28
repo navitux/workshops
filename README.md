@@ -26,6 +26,7 @@ Tiene como objetivo ayudar a los profesores a registrar más rápido a sus corre
 
 This project was made as a contribution to the comunity of students in Preparatoria no. 3 of the University of Guadalajara (UdeG) and in part as social service and was made only for me, there is much to correct but I will improve it as I move forward.
 Has as purpose help teachers to register your corresponding students faster, control number of vacancies separated in a hierarchy by "departments > workshops (or courses) > student".
+
 **Its basic functions are:**
 - Can create / edit / delete the departments in question.
 - Can create / edit / delete data of students.
