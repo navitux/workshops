@@ -65,9 +65,20 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
  <h1>Bienvenido <?php $cadena_dato_usuario["nombre_real"] = utf8_encode($cadena_dato_usuario["nombre_real"]); echo $cadena_dato_usuario["nombre_real"];?></h1>
  <p><b>Hora</b> y <b>Fecha</b> de ingreso (último acceso): <?php echo $_SESSION["fecha"]; ?></p>
 </nav>
-<aside>
+<!--Estos scripts son para abrir/cerrar el menú de opciones -->
+<script>
+function openNav() {
+  document.getElementById("opciones-fuertes").style.width = "20%";
+}
+
+function closeNav() {
+  document.getElementById("opciones-fuertes").style.width = "0";
+}
+</script>
+<aside id="opciones-fuertes">
  <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
- <button id="edit_depto" onclick="document.getElementById('edit_depto_modal').style.display='block'" type='button' style='border:none;' title="Añadir Departamento o Modificar información de alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Modificar Departamento</button>
+ <a style="font-size:30px; color:white; text-align:right;text-decoration:none;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+ <button id="edit_depto" onclick="document.getElementById('edit_depto_modal').style.display='block'" type='button' style='border:none;' title="Añadir Departamento o Modificar información de alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Departamento</button>
  <br><br>
  <div id="edit_depto_modal" class="modal">
 	<div class="modal-content">
@@ -124,7 +135,8 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 				<hr>
 				<th><b>Crear Departamento Nuevo:</b></th>
 			</tr>
-			<tr>
+	
+					echo "<option value='".$depto[0]."'>".$depto		<tr>
 				<td style="text-align:right;">Nombre del Departamento: </td><td><input type="text" name="nombre_depto" maxlength="200" required /></td>
 			</tr>
 			<tr>
@@ -219,7 +231,7 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 	}
  </script>
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
- <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Eliminar TAE</button>
+ <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Taller/TAE</button>
  <br><br>
  <div id="edit_tae_modal" class="modal">
 	<div class="modal-content">
@@ -680,94 +692,14 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 	}
  </script>
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
- <button id="ver_listas" onclick="document.getElementById('ver_listas_modal').style.display='block'" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver solamente listas</button>
-  <br><br>
-  <div id="ver_listas_modal" class="modal">	
-	<form class="modal-content" method="post" action="">
-		<span onclick="document.getElementById('ver_listas_modal').style.display='none'" class="close" title="Cerrar">&times;</span>
-		<table>
-			<tr>
-				<td style="text-align:center;"><h1>Listas de Alumnos</h1></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Nombre(s): </td><td><input type="text" name="nombres" required></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Apellido Paterno: </td><td><input type="text" name="apellido_pa" required></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Apellido Materno: </td><td><input type="text" name="apellido_ma"></td>
-			</tr>
-			<tr>
-				<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td><td>Turno: <select name="turno" required><option selected>Matutino</option><option>Vespertino</option></select></td>
-			</tr>
-			<tr>
-				<td colspan="2"><button type="reset">limpiar campos</button></td>
-				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
-		</table>
-	</form>
- </div>
- <script>
-	// Obtener modal
-	var modal = document.getElementById('ver_listas_modal');
-	// cuando se cliquea donde sea entonces cerrar modal:
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
- </script>
- <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
-
- <button id="ver_deptos" onclick="document.getElementById('ver_deptos_modal').style.display='block'" type='button' style='border:none;' title="Solamente visualizar las taes/talleres ordenadas por Departamentos"><img src='tabla.jpg' width='20px' height='20px'/>Ver solamente Departamentos con taes/talleres</button>
-
- <button id="ver_deptos" onclick="document.getElementById('ver_deptos_modal').style.display='block'" type='button' style='border:none;' title="Solamente visualizar las TAEs/talleres ordenadas por Departamentos"><img src='tabla.jpg' width='20px' height='20px'/>Ver solamente Departamentos con TAEs</button>
-
- <div id="ver_deptos_modal" class="modal">	
-	<form class="modal-content" method="post" action="">
-		<span onclick="document.getElementById('ver_deptos_modal').style.display='none'" class="close" title="Cerrar">&times;</span>
-		<table>
-			<tr>
-				<td style="text-align:center;"><h1>Listas de Alumnos</h1></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Nombre(s): </td><td><input type="text" name="nombres" required></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Apellido Paterno: </td><td><input type="text" name="apellido_pa" required></td>
-			</tr>
-			<tr>
-				<td style="text-align:right;">Apellido Materno: </td><td><input type="text" name="apellido_ma"></td>
-			</tr>
-			<tr>
-				<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td><td>Turno: <select name="turno" required><option selected>Matutino</option><option>Vespertino</option></select></td>
-			</tr>
-			<tr>
-				<td colspan="2"><button type="reset">limpiar campos</button></td>
-				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
-		</table>
-	</form>
- </div>
- <script>
-	// Obtener modal
-	var modal = document.getElementById('ver_deptos_modal');
-	// cuando se cliquea donde sea entonces cerrar modal:
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
- </script>
+ <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
+  
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
 </aside>
-<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
-<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
 <!--BUSCADOR DE ALUMNOS-->
 <section id="buscador">
 	<article>
-		
+		<button id="global-edit" onclick="openNav()">&#9776; Opciones para Editar</button>
 	</article>
 </section>
 
@@ -813,16 +745,45 @@ $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 			/*AQUÍ ES DONDE SE EMPIEZAN A MOSTRAR TODAS LAS taes/talleres DE CADA DEPARTAMENTO EN CADA ITERACIÓN (UNA ITERACIÓN POR CADA DEPTO., CLARO)*/
 			$lista_de_taes = mysqli_query($enlace_db,"SELECT nombre_formal, vacantes_totales FROM ".$cad_nombre_corto_depto[0]);
 			//El arreglo obtenido arriba ahora se imprime en pantalla a manera de: "Nombre de TAE" con "número de vacantes":
-			echo "<table border='1' style=' float:center;'> <tr> <th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> <th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:  </th> </tr>";
+			echo "<table border='0' bordercolor='#000000' cellspacing='1px' bordercolor='#000000' style='display:block; float:center;'> 
+					<tr> 
+						<th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> 
+						<th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:</th>  
+					</tr>";
 			while($cad_lista_de_taes = mysqli_fetch_row($lista_de_taes)){
 				//A continuación se mostrará la cantidad de alumnos registrados al lado de las vacantes establecidas.
 				$alumno_realm_reg = mysqli_query($enlace_db,"SELECT count(tae) FROM alumnos_taes WHERE tae='".$cad_lista_de_taes[0]."'");
 				$cad_alumno_realm_reg = mysqli_fetch_row($alumno_realm_reg);
-				echo "<tr><td style='width:150px; '>".$cad_lista_de_taes[0]."</td>"."<td style='text-align:center;'>".$cad_lista_de_taes[1]."	/	".$cad_alumno_realm_reg[0]."</td><td style='border:none;'></td></tr>";
+				echo "<tr>
+						<td style='width:150px; '>".$cad_lista_de_taes[0]."</td>".
+						"<td style='text-align:center;'>".$cad_lista_de_taes[1]."	/	".$cad_alumno_realm_reg[0]."</td>
+						<td>
+							<table border='0'>
+								<tr>
+									<th style='background-color:#0000FF; color:white;'>Apellido(s)</th> 
+									<th style='background-color:#0000FF; color:white;'>Nombre(s)</th>
+									<th style='background-color:#0000FF; color:white;'>No. Estudiante</th>
+									<th style='background-color:#0000FF; color:white;'>Teléfono</th>
+									<th style='background-color:#0000FF; color:white;'>Correo</th> 
+								</tr>";
+								echo "<tr>
+									<td>datogjhgfhfgh</td>
+									<td>dato<ghfghf/td>
+									<td>datojghjg</td>
+									<td>datoghfghfghfghfg</td>
+									<td>datofghfgh</td>
+								</tr>";
+								
+						echo "</table>
+						</td>
+					</tr>";
+				echo "<tr border='none' style='background-color:white;'></tr>";
+				echo "<tr border='none' style='background-color:white;'></tr>";
+				echo "<tr border='none' style='background-color:white;'></tr>";
+				echo "<tr border='none' style='background-color:white;'></tr>";
 			}
 			echo "</table>";
 			echo "<br>";
-			
 		}
 	}else{ echo "No hay nada"; echo "</table>";echo '<br><hr style="border:2px s0olid #0c0030;">';}
 ?>
