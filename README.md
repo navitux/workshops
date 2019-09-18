@@ -21,6 +21,11 @@ Tiene como objetivo ayudar a los profesores a registrar más rápido a sus corre
 - Poder descargar las listas de alumnos en formato Excel o LibreOfficeCalc. 
 - Poder subir listas de alumnos por lotes en archivos de excel(.xslx), o LibreOfficeCalc(.ods) o bien en archivos de texto plano separado por comas (csv).
 
+**Cómo Usar:**
+-Para comenzar a usar la aplicación, la carpeta 'session' debe situarse en el directorio raíz del servidor (se ha implementado hasta ahora en apache Linux (conjunto LAMP), WAMP y XAMP), se accede a la pagina de inicio de sesión (login.php) debería quedar una url más o menos así: 'http:localhost/session/login.php' se ingresa el usuario y contraseña provisional 'admingral' 'passCount3r' para acceder a la aplicación y revisar su funcionamiento.
+
+
+
 ---
 #ENGLISH/INGLÉS:
 
@@ -32,3 +37,6 @@ Has as purpose help teachers to register your corresponding students faster, con
 - Can create / edit / delete data of students.
 - Can download the student's list in Excel or LibreOffice format.
 - Can Upload student's lists batches with excel's files (.xslx) or LibreOfficeCalc's files (.ods) or plain text files in comma separated values (csv) as well.
+
+**How to use:**
+-To start the use of the app, folder 'session' must have been in root directory of server (it has been implemented so far in apache Linux (LAMP set), WAMP and XAMP), access to start page (login.php) a url should look like this: 'http:localhost/session/login.php' and the provisional username and password is entered: 'admingral' 'passCount3r' to access the application and check its functionality.

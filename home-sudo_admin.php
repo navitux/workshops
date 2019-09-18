@@ -16,11 +16,7 @@ $_SESSION["timeout"] = time();
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="homs_style.css" media="all"/>
-
 	<title>taes/talleres Prepa 3</title>
-
-	<title>TAEs Prepa 3</title>
-
 <script src="jquery-3.4.1.min.js"></script>
 <script language="JavaScript">
 	setTimeout("alert('se cierra sesión por inactividad')", 3200000);
@@ -557,14 +553,12 @@ function closeNav() {
 				<td style="text-align:right;">Alumno:</td>
 				<td><!--Aquí se listan toodas las taes/talleres que existen actualmente -->
 					<?php
-					echo  "<select name='alumno_name' required>";
-					echo "<option></option>";
 					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes");
 					?>
 				<td> <!--Aquí se listan toodas las TAEs que existen actualmente -->
 					<?php
 					echo  "<select name='alumno_name' required>";
-					echo "<option></option>";
+					echo "<option value=''>--Escoja al alumno--</option>";
 					$listar_alumnos =  mysqli_query($enlace_db, "SELECT apellido, nombre FROM alumnos_taes");
 
 					$m = mysqli_num_rows($listar_alumnos);
@@ -693,7 +687,6 @@ function closeNav() {
  </script>
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
  <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
-  
  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
 </aside>
 <!--BUSCADOR DE ALUMNOS-->
@@ -765,13 +758,6 @@ function closeNav() {
 									<th style='background-color:#0000FF; color:white;'>No. Estudiante</th>
 									<th style='background-color:#0000FF; color:white;'>Teléfono</th>
 									<th style='background-color:#0000FF; color:white;'>Correo</th> 
-								</tr>";
-								echo "<tr>
-									<td>datogjhgfhfgh</td>
-									<td>dato<ghfghf/td>
-									<td>datojghjg</td>
-									<td>datoghfghfghfghfg</td>
-									<td>datofghfgh</td>
 								</tr>";
 								
 						echo "</table>
