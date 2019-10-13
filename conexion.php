@@ -16,7 +16,7 @@ function conectar(){
 	}
 	return $db;
 }
-//generar una sesión lo más rebusada posible:
+//generar una sesión lo más rebuscada posible:
 function generarCodigo($longitud) { 
 	$key = '';
 	$pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_#';

@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <?php
 date_default_timezone_set('America/Mexico_City');
 error_reporting(E_ALL & ~(E_NOTICE));
@@ -23,7 +23,7 @@ $_SESSION["timeout"] = time();
     setTimeout("location.href='logout.php'", 3200000);
 </script>
 </head>
-<body>
+<body oncontextmenu="return false" onkeydown="return false">
 <?php
 $time = 3600; // 1 hora en segundos
 // verificamos si existe la sesión
@@ -759,7 +759,26 @@ function closeNav() {
 									<th style='background-color:#0000FF; color:white;'>Teléfono</th>
 									<th style='background-color:#0000FF; color:white;'>Correo</th> 
 								</tr>";
-								
+								$qss = mysqli_query($enlace_db,"SELECT apellido, nombre, no_estudiante, telefono, correo FROM alumnos_taes WHERE tae ='".$cad_lista_de_taes[0]."' ORDER BY apellido, nombre ASC");
+								while($cad_qss = mysqli_fetch_row($qss)){
+									echo "<tr>";
+										echo "<td>";
+											echo $cad_qss[0];
+										echo "</td>";
+										echo "<td>";
+											echo $cad_qss[1];
+										echo "</td>";
+										echo "<td>";
+											echo $cad_qss[2];
+										echo "</td>";
+										echo "<td>";
+											echo $cad_qss[3];
+										echo "</td>";
+										echo "<td>";
+											echo $cad_qss[4];
+										echo "</td>";
+									echo "</tr>";
+								}
 						echo "</table>
 						</td>
 					</tr>";

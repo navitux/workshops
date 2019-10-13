@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <?php
 date_default_timezone_set('America/Mexico_City');
 error_reporting(E_ALL & ~(E_NOTICE));
@@ -22,6 +22,20 @@ $_SESSION["timeout"] = time();
 		#seleccionador{
 			border:1px solid black;
 		}
+		button{
+			background-color:#283c80;
+			border:1px solid black;
+			border-radius:9px;
+			color:white;
+			font-size:120%;
+		}
+		button:hover{
+			background-color:#61615d;
+		}
+		button:active{
+			color:white;
+			background-color:#212120;
+		}
 	</style>
 	<title>Listas</title>
 	<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
@@ -30,7 +44,7 @@ $_SESSION["timeout"] = time();
 		setTimeout("location.href='logout.php'", 3200000);
 	</script>
 </head>
-<body>
+<body oncontextmenu="return false" onkeydown="return false">
 	<?php
 	$time = 3600; // 1 hora en segundos
 	// verificamos si existe la sesión
@@ -98,8 +112,10 @@ $_SESSION["timeout"] = time();
 	<?php
 	//Se verifica si hay algún valor en la varible enviada por el formulario previo.
 	$busqueda = $_POST["qe_search"];
+	$quicksearch = explode("#%#", $busqueda);
+	
 	if(isset($busqueda)){
-		$quicksearch = explode("#%#", $busqueda);
+		
 		echo "<b style='text-align:center;' align='center'>".$quicksearch[1]." > ".$quicksearch[0]."</b><br>";
 		echo "<table id='lista' class='tablesorter' border='1' align='center'>";
 			echo "<tr style='color:white; background-color:#283c80; text-align:center;'>";
@@ -126,7 +142,7 @@ $_SESSION["timeout"] = time();
 			echo "</tr>";
 		$qss = mysqli_query($enlace_db,"SELECT apellido, nombre, no_estudiante, telefono, correo FROM alumnos_taes WHERE tae ='".$quicksearch[0]."' ORDER BY apellido, nombre ASC");
 		while($cad_qss = mysqli_fetch_row($qss)){
-			echo "<tr contenteditable>";
+			echo "<tr>";
 				echo "<td>";
 					echo $cad_qss[0];
 				echo "</td>";
@@ -151,13 +167,58 @@ $_SESSION["timeout"] = time();
 			<button id='tocsv' onclick='CSV()'>Descargar lista en formato de texto CSV (.csv)</button>
 			</div>";
 		echo "<br><b style='text-align:center;' align='center'> Opciones al grupo de ".$quicksearch[0]."</b><br>";
-		echo "<form name='delete_list' method='post action='' align='left'>";
-			echo "<button>Borrar a todos los alumnos</button><br>";
-		echo "</form>";
-		echo "<form name='import_list' method='post action='' align='left'>";
-			echo "Importar lista desde archivo (.csv):   <input type='file' name='import_csv'><br>";
-			echo "<button type='submit'>Importar<button/>";
-		echo "</form>";
+		
+		
+		
+		echo "<div style='border:solid black 1px;'><form method='post' action='' enctype='multipart/form-data' align='left'>";
+			echo "<b>Importar lista de alumnos desde archivo (.csv): </b><input type='file' name='import_csv' accept=' .csv' /><br>";
+			echo "<p style='color:white; background-color:#9874f2;'>Solamente escoger una archivo .csv en codificación UTF-8 con los campos de los estudiantes correspondientes (No incluir nombre del taller/TAE ni otra información adicional)</p>";
+			echo "<input type='submit' name='upcsv' value='Importar'/>";
+		echo "</form></div>";
+		//Se guarda el nombre de la tae escogida para las consultas posteriores.
+		$_SESSION['taller'] = $quicksearch[0];
+	}
+	
+	if (is_uploaded_file($_FILES['import_csv']['tmp_name'])){
+		if ($_FILES['import_csv']['type'] == 'text/csv'){
+			$csv = $_FILES['import_csv']['tmp_name'];
+			$file_csv = fopen($csv,"r");
+		
+			echo "<div>";
+			echo "<table>";
+			echo "<tr style='color:white; background-color:#283c80; text-align:center;'>";
+				echo "<td colspan='5'>";
+					echo "<b>Se añadieron los siguientes alumnos al taller: ".$_SESSION['taller']."</b><br>";
+				echo "</td>";
+			echo "</tr>";
+			echo "<tr style='color:white; background-color:#283c80;'>";
+				echo "<td>";
+					echo "Apellido(s)";
+				echo "</td>";
+				echo "<td>";
+					echo "Nombre(s)";
+				echo "</td>";
+				echo "<td>";
+					echo "No. de Alumno";
+				echo "</td>";
+				echo "<td>";
+					echo "Teléfono";
+				echo "</td>";
+				echo "<td>";
+					echo "Correo";
+				echo "</td>";
+			echo "</tr>";
+		while($reg = fgetcsv($file_csv)){
+			mysqli_query($enlace_db,"INSERT INTO alumnos_taes(apellido,nombre,no_estudiante,telefono,correo,tae) VALUES('".$reg[0]."','".$reg[1]."','".$reg[2]."','".$reg[3]."','".$reg[4]."','".$_SESSION['taller']."')") or die();
+			echo "<tr>";
+			echo "<td>".$reg[0]."</td><td>".$reg[1]."</td><td>".$reg[2]."</td><td>".$reg[3]."</td><td>".$reg[4]."</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+		echo "</div>";
+		fclose($file_csv);
+		unset($_SESSION['taller']);
+		}else{echo "<p style='color:white; background-color:red;'>¡Archivo no válido!</p>";}
 	}
 	?>
 	

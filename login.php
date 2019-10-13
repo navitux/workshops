@@ -1,4 +1,4 @@
-﻿<DOCTYPE! html>
+﻿<!DOCTYPE html>
 <html lang="es">
  <head>
   <!--Este proyecto usará sqlite para manipular la base de datos de los estudiantes -->
@@ -131,7 +131,6 @@ bottom:0;
 	</section>
 	<!--Termina el formulario de inicio de sesión-->
 	<footer id="login-footer">Escuela Preparatoria no. 3 Guadalajara, Jal. </footer>
-  <?php //require("conexion.php");  conecta() = $db; echo "hola: ".$db."'";?>
 
 </body>
 </html>
