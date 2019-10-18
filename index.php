@@ -13,26 +13,83 @@
 		<img src="prepa3-logo.jpg" style="margin:5px;display:block; float:left; height:35px; width:30px;">
 		<a href="#home" class="active">Inicio</a>
 		<a href="#taes">Ver TAES por Departamento</a>
-		<a href="#">Ver Lista de TAEs</a>
 		<a href="#contactos">Contacto</a>
 		<a href="login.php" id="login">¿Profesor?</a>
 		</nav>
 	</header>
 
-	<div id="home">
-		<div class="bg-image">
-			<div style="padding-top:10%; display:block; position:relative; float:center;">
-				<h1 class="bg-text">Bienvenido a TAEs/Talleres Prepa 3</h1>
-				<p class="bg-text">(beta)</p>
-			</div>
-		</div>
-	</div>
+	
 	
 	<!-- Departamentos de las TAEs -->
 	<section id="taes">
+		<p>Bienvenido</p>
 		<p>Puedes escoger un departamento para ver sus TAEs/Talleres correspondientes</p>
 		<br>
 		<div style="text-align:center;">
+			<style>
+				.accordion {
+					background-color: #eee;
+					color: #444;
+					cursor: pointer;
+					padding: 18px;
+					width: 100%;
+					text-align: left;
+					border: none;
+					outline: none;
+					transition: 0.4s;
+					outline: none;
+				}
+				/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+				.active, .accordion:hover {
+					background-color: #ccc;
+					outline: none;
+				}
+				
+				.openmodal{
+					background-color: #fff;
+					color: #444;
+					cursor: pointer;
+					padding: 18px;
+					width: 100%;
+					text-align: left;
+					border: none;
+					outline: none;
+					transition: 0.4s;
+					outline: none;
+				}
+
+				/* Style the accordion panel. Note: hidden by default */
+				.panel {
+					padding: 0 18px;
+					background-color: white;
+					display: none;
+					overflow: hidden;
+					color:black;
+				}
+				
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+			</style>
 			<?php 
 			//obtener conexión con BD:
 			require("conexion.php");
@@ -42,16 +99,38 @@
 			}
 			$dpt = mysqli_query($enlace_db,"SELECT nombre_formal,nombre FROM departamentos ORDER BY nombre_formal ASC") or die();
 			while($cad_dpt = mysqli_fetch_row($dpt)){
-				
-				echo "<a href='#".$cad_dpt[1]."'>".$cad_dpt[0]."</a><br>";
+				echo "<button class='accordion'>".$cad_dpt[0]."</button>";
+				$taller = mysqli_query($enlace_db,"SELECT nombre_formal,nombre_tae FROM ".$cad_dpt[1]." ORDER BY nombre_formal ASC") or die();
+				echo "<div class='panel'>";
+				while($cad_taller = mysqli_fetch_row($taller)){
+					echo "<button class='openmodal' id='btn-".$cad_taller[1]."'>".$cad_taller[0]."</button><br>";
+				}
+				echo "</div>";
 			}
 			?>
-			
 		</div>
 	</section>
-	<div class="corto" id="fondo-taes1"></div>
-	<!-- _______ -->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+	acc[i].addEventListener("click", function() {
+	/* Toggle between adding and removing the "active" class,
+	to highlight the button that controls the panel */
+	this.classList.toggle("active");
 	
+	/* Toggle between hiding and showing the active panel */
+	var panel = this.nextElementSibling;
+	if (panel.style.display === "block") {
+		panel.style.display = "none";
+	} else {
+		panel.style.display = "block";
+	}
+	});
+} 
+</script>
+		<!-- _______ -->
 		<!-- Opciones -->
 		<!--Se introducen "modal" de formulario de -->
 		<!--formulario para inscripción a la TAE -->
@@ -60,20 +139,45 @@
 		<!--o con un botón-->
 		
 		<!-- __________ -->
+		
 		<?php
 		$dpt = mysqli_query($enlace_db,"SELECT nombre_formal,nombre FROM departamentos ORDER BY nombre_formal ASC") or die();
 		while($cad_dpt = mysqli_fetch_row($dpt)){
-				echo "<section id='".$cad_dpt[1]."'>";
-				echo "<h1>".$cad_dpt[0]."</h1>";
+				
 				$taller = mysqli_query($enlace_db,"SELECT nombre_formal,nombre_tae FROM ".$cad_dpt[1]." ORDER BY nombre_formal ASC") or die();
 				while($cad_taller = mysqli_fetch_row($taller)){
-					echo "<article id='".$cad_taller[1]."'>";
-					echo "<h1>".$cad_taller[0]."</h1>";
-					echo "<br>"; ?>
-					<button onclick="document.getElementById(<?php echo "'".$cad_taller[1]."'";?>).style.display='block'">Formulario de Inscripción</button>
-					<div id="proteccivil" class="modal">	
-						<form class="modal-contenido animate" method="post" action="">
-							 <span onclick="document.getElementById(<?php echo "'".$cad_taller[1]."'";?>).style.display='none'" class="close" title="Cerrar">&times;</span>
+					
+		?>
+					<script>
+					// Obtener modal
+					var modal = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
+					// cuando se cliquea donde sea entonces cerrar modal:
+					window.onclick = function(event) {
+						if (event.target == modal) {
+						modal.style.display = "none";
+						}
+					}
+					</script>
+					<style>
+/* The Close Button */
+<?php echo "#close-".$cad_taller[1];?>{
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+<?php echo "#close-".$cad_taller[1].":hover";?>,
+<?php echo "#close-".$cad_taller[1].":focus";?> {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+					</style>
+					<div id=<?php echo "'".$cad_taller[1]."'";?> class="modal">
+						<div class="modal-content">
+						<span id=<?php echo "'close-".$cad_taller[1]."'";?> title="Cerrar">&times;</span>
+						<form  method="post" action="">
 							<table>
 								<tr>
 									<td style="text-align:center;"><h1>Protección Civil</h1></td>
@@ -96,24 +200,41 @@
 								</tr> 
 							</table>
 						</form>
+						</div>
 					</div>
-				<script>
-				// Obtener modal
-				var modal = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
-				// cuando se cliquea donde sea entonces cerrar modal:
-				window.onclick = function(event) {
-				if (event.target == modal) {
-					modal.style.display = "none";
-					}
+<script>
+// Get the modal
+var modal = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
+
+// Get the button that opens the modal
+var btn = document.getElementById(<?php echo "'btn-".$cad_taller[1]."'";?>);
+
+// Get the <span> element that closes the modal
+var span = document.getElementById(<?php echo "'close-".$cad_taller[1]."'";?>);
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+			<?php
 				}
-				</script>
-			<?php	echo "</article>";
-				}
-				echo "</section>";
-				echo "<br><br><br><br><br><br><br><br><br><br>";
 			}
 		
 		?>
+		
 		<div class="corto" id="fondo-taes1"></div>
 		<footer id="contactos" style="background-color:black; color:white; text-align:center;">
 				<div>
