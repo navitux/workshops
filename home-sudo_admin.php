@@ -72,7 +72,7 @@ function closeNav() {
 }
 </script>
 <aside id="opciones-fuertes">
- <!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+ <!-- _________________________________________________________________________________________________________________________________________________ -->
  <a style="font-size:30px; color:white; text-align:right;text-decoration:none;" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
  <button id="edit_depto" onclick="document.getElementById('edit_depto_modal').style.display='block'" type='button' style='border:none;' title="Añadir Departamento o Modificar información de alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Departamento</button>
  <br><br>

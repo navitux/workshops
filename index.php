@@ -119,7 +119,7 @@
 		<footer id="contactos" style="background-color:black; color:white; text-align:center;">
 				<div>
 					<p>Escuela Preparatoria No. 3  Contáctanos: tel.: 33333333 e-mail: dgsgdgsg@ggsdgg.com </p>
-					<p>Dirección: Goméz De Mendiola y gdgdggdgd no. 333 col. Oblatos, Guadalajara, Jalisco</p>
+					<p>Dirección: Goméz De Mendiola y Álvarez Del Castillo no. 333 col. Oblatos, Guadalajara, Jalisco</p>
 				</div>
 		</footer>
  </body>
