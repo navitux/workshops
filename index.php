@@ -22,9 +22,8 @@
 	<div id="home">
 		<div class="bg-image">
 			<div style="padding-top:10%; display:block; position:relative; float:center;">
-				<h1 class="bg-text">Bienvenido a TAEs Prepa 3</h1>
-				<p class="bg-text">Escoge un departamento y selecciona tu TAE/Taller favorito</p>
-				<p class="bg-text"><a href="#taes">¡ Comenzar !</a></p>
+				<h1 class="bg-text">Bienvenido a TAEs/Talleres Prepa 3</h1>
+				<p class="bg-text">(beta)</p>
 			</div>
 		</div>
 	</div>

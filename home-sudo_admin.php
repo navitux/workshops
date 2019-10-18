@@ -154,11 +154,9 @@ function closeNav() {
 			mysqli_query($enlace_db,"INSERT INTO departamentos (`nombre`, `nombre_formal`) VALUES('".$short_new_depto."', '".$new_depto."')");
 			//AQUÍ SE CREA UNA NUEVA TABLA AL DEPARTAMENTO YA "RESGISTRADO"
 			mysqli_query($enlace_db,"CREATE TABLE IF NOT EXISTS `".$short_new_depto."` (
-			`id_tae` int(100) NOT NULL AUTO_INCREMENT,
 			`nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
 			`nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-			`vacantes_totales` int(25) NOT NULL DEFAULT '25',
-			PRIMARY KEY (`id_tae`))");
+			`vacantes_totales` int(25) NOT NULL DEFAULT '25')");
 			 header("Location: home-sudo_admin.php");;
 			unset($vacantes_dept);
 		}	
