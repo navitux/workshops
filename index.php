@@ -88,6 +88,7 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  overflow:auto;
 }
 			</style>
 			<?php 
@@ -137,7 +138,6 @@ for (i = 0; i < acc.length; i++) {
 		<!--NOTA: Modal es un panel que muestra información -->
 		<!--en primer plano y que se cierra dando clic fuera de él -->
 		<!--o con un botón-->
-		
 		<!-- __________ -->
 		
 		<?php
@@ -150,11 +150,11 @@ for (i = 0; i < acc.length; i++) {
 		?>
 					<script>
 					// Obtener modal
-					var modal = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
+					var modal<?php echo "_".$cad_taller[1];?> = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
 					// cuando se cliquea donde sea entonces cerrar modal:
 					window.onclick = function(event) {
-						if (event.target == modal) {
-						modal.style.display = "none";
+						if (event.target == modal<?php echo "_".$cad_taller[1];?>) {
+						modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
 						}
 					}
 					</script>
@@ -174,13 +174,14 @@ for (i = 0; i < acc.length; i++) {
   cursor: pointer;
 }
 					</style>
-					<div id=<?php echo "'".$cad_taller[1]."'";?> class="modal">
+					<div id=<?php echo "'modal_".$cad_taller[1]."'";?> class="modal">
 						<div class="modal-content">
 						<span id=<?php echo "'close-".$cad_taller[1]."'";?> title="Cerrar">&times;</span>
+						<b><?php echo $cad_taller[0]; ?></b>
 						<form  method="post" action="">
 							<table>
 								<tr>
-									<td style="text-align:center;"><h1>Protección Civil</h1></td>
+									<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td>
 								</tr>
 								<tr>
 									<td style="text-align:right;">Nombre(s): </td><td><input type="text" name="nombres" required></td>
@@ -192,7 +193,10 @@ for (i = 0; i < acc.length; i++) {
 									<td style="text-align:right;">Apellido Materno: </td><td><input type="text" name="apellido_ma"></td>
 								</tr>
 								<tr>
-									<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td><td>Turno: <select name="turno" required><option selected>Matutino</option><option>Vespertino</option></select></td>
+									<td>Número de teléfono:</td><td><input type="number" name="tel_alumno" maxlength="15" placeholder="opcional"></td>
+								</tr>
+								<tr>
+									<td style="text-align:right;">Correo: </td><td><input type="e-mail" name="correo_alumno" placeholder="opcional"></td>
 								</tr>
 								<tr>
 									<td colspan="2"><button type="reset">limpiar campos</button></td>
@@ -204,7 +208,7 @@ for (i = 0; i < acc.length; i++) {
 					</div>
 <script>
 // Get the modal
-var modal = document.getElementById(<?php echo "'".$cad_taller[1]."'";?>);
+var modal<?php echo "_".$cad_taller[1];?> = document.getElementById(<?php echo "'modal_".$cad_taller[1]."'";?>);
 
 // Get the button that opens the modal
 var btn = document.getElementById(<?php echo "'btn-".$cad_taller[1]."'";?>);
@@ -214,27 +218,25 @@ var span = document.getElementById(<?php echo "'close-".$cad_taller[1]."'";?>);
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
-  modal.style.display = "block";
+  modal<?php echo "_".$cad_taller[1];?>.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+modal<?php echo "_".$cad_taller[1];?>.onclick = function(event) {
+  
+    modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
+  6
 }
 </script>
 			<?php
 				}
 			}
-		
 		?>
-		
 		<div class="corto" id="fondo-taes1"></div>
 		<footer id="contactos" style="background-color:black; color:white; text-align:center;">
 				<div>
