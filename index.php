@@ -230,7 +230,6 @@ span.onclick = function() {
 modal<?php echo "_".$cad_taller[1];?>.onclick = function(event) {
   
     modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
-  6
 }
 </script>
 			<?php

@@ -23,7 +23,7 @@ $_SESSION["timeout"] = time();
     setTimeout("location.href='logout.php'", 3200000);
 </script>
 </head>
-<body oncontextmenu="return false" onkeydown="return false">
+<body ><!--oncontextmenu="return false" onkeydown="return false" -->
 <?php
 $time = 3600; // 1 hora en segundos
 // verificamos si existe la sesión
@@ -88,7 +88,7 @@ function closeNav() {
 		<form method="post" action="">
 		<table>
 			<tr>
-				<hr>
+				<td>
 				<b>Eliminar Departamento:</b>
 				<select name="eliminar_depto">
 				<?php 
@@ -112,9 +112,12 @@ function closeNav() {
 				}
 				?>
 				</select>
+				</td>
 			</tr>
 			<tr>
+				<td>
 				<small>(Recuerde que no se podrá deshacer ésta operación)</small>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><button type="reset">Limpiar campos</button></td>
@@ -131,8 +134,6 @@ function closeNav() {
 				<hr>
 				<th><b>Crear Departamento Nuevo:</b></th>
 			</tr>
-	
-					echo "<option value='".$depto[0]."'>".$depto		<tr>
 				<td style="text-align:right;">Nombre del Departamento: </td><td><input type="text" name="nombre_depto" maxlength="200" required /></td>
 			</tr>
 			<tr>
@@ -216,15 +217,13 @@ function closeNav() {
  </div>
  <script>
 	// Obtener modal
-	var modal = document.getElementById('edit_depto_modal');
+	var modala = document.getElementById('edit_depto_modal');
 	// cuando se cliquea donde sea entonces cerrar modal:
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
+	modala.onclick = function(event) {
+		modala.style.display = "none";
 	}
  </script>
- <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+ <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Taller/TAE</button>
  <br><br>
  <div id="edit_tae_modal" class="modal">
@@ -270,9 +269,9 @@ function closeNav() {
 		
 					<td colspan="2"><button type="reset">Limpiar Nombre</button></td>
 					<td colspan="2"><button type="submit">Añadir TAE</button></td>
+					<?php echo "</div>"; ?>
 				</form>
 				<?php
-				echo "</div>";
 				//LA SIG. LÍNEA ES PARA AÑADIR UNA TAE NUEVA A UN DEPARTAMENTO CORRESPONDIENTE:
 				
 				if(isset($_POST['add_tae']) AND isset($_POST['add_short_tae']) AND isset($_POST['depto_add_tae'])){
@@ -354,7 +353,7 @@ function closeNav() {
 				?>
 			</tr>
 			<tr>
-				<small>(Recuerde que no se podrá deshacer ésta operación)</small>
+				<td><small>(Recuerde que no se podrá deshacer ésta operación)</small></td>
 			</tr>
 		</table>
 		<!-- FORMULARIO "ELIMINAR TAE" FIN-->
@@ -432,16 +431,14 @@ function closeNav() {
  </div>
  <script>
 	// Obtener modal
-	var modal = document.getElementById('edit_tae_modal');
+	var modalb = document.getElementById('edit_tae_modal');
 	// cuando se cliquea donde sea entonces cerrar modal:
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
+	modalb.onclick = function(event) {
+		modalb.style.display = "none";
 	}
  </script>
  
- <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+ <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_alumno" onclick="document.getElementById('edit_alumno_modal').style.display='block'" type='button' style='border:none;' title="Añadir Alumno Nuevo o Modificar alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Alumno</button>
   <br><br>
  <div id="edit_alumno_modal" class="modal">	
@@ -675,17 +672,15 @@ function closeNav() {
  </div>
  <script>
 	// Obtener modal
-	var modal = document.getElementById('edit_alumno_modal');
+	var modalc = document.getElementById('edit_alumno_modal');
 	// cuando se cliquea donde sea entonces cerrar modal:
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
+	modalc.onclick = function(event) {
+		modalc.style.display = "none";
 	}
  </script>
- <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
+ <!-- _________________________________________________________________________________________________________________________________________________ -->
  <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
- <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> 
+ <!-- _________________________________________________________________________________________________________________________________________________ -->
 </aside>
 <!--BUSCADOR DE ALUMNOS-->
 <section id="buscador">
