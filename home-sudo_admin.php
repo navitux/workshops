@@ -215,14 +215,7 @@ function closeNav() {
 		<!-- FOMRMULARIO PARA EDITAR LA INFORMACIÓN DE ALGÚN DEPARTAMENTO FIN-->
 	</div>
  </div>
- <script>
-	// Obtener modal
-	var modala = document.getElementById('edit_depto_modal');
-	// cuando se cliquea donde sea entonces cerrar modal:
-	modala.onclick = function(event) {
-		modala.style.display = "none";
-	}
- </script>
+ 
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Taller/TAE</button>
  <br><br>
@@ -429,14 +422,7 @@ function closeNav() {
 		<!-- FORMULARIO "EDITAR NOMBRE DE TAE" FIN-->
 	</div>
  </div>
- <script>
-	// Obtener modal
-	var modalb = document.getElementById('edit_tae_modal');
-	// cuando se cliquea donde sea entonces cerrar modal:
-	modalb.onclick = function(event) {
-		modalb.style.display = "none";
-	}
- </script>
+ 
  
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_alumno" onclick="document.getElementById('edit_alumno_modal').style.display='block'" type='button' style='border:none;' title="Añadir Alumno Nuevo o Modificar alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Alumno</button>
@@ -670,14 +656,7 @@ function closeNav() {
 	<!--ELIMINAR ALUMNO FIN-->
 	</div>
  </div>
- <script>
-	// Obtener modal
-	var modalc = document.getElementById('edit_alumno_modal');
-	// cuando se cliquea donde sea entonces cerrar modal:
-	modalc.onclick = function(event) {
-		modalc.style.display = "none";
-	}
- </script>
+ 
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
  <!-- _________________________________________________________________________________________________________________________________________________ -->

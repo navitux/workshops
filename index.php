@@ -178,7 +178,7 @@ for (i = 0; i < acc.length; i++) {
 						<div class="modal-content">
 						<span id=<?php echo "'close-".$cad_taller[1]."'";?> title="Cerrar">&times;</span>
 						<b><?php echo $cad_taller[0]; ?></b>
-						<form  method="post" action="">
+						<form  name="solicitud" method="post" action="">
 							<table>
 								<tr>
 									<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td>
@@ -227,14 +227,16 @@ span.onclick = function() {
 }
 
 // When the user clicks anywhere outside of the modal, close it
-modal<?php echo "_".$cad_taller[1];?>.onclick = function(event) {
-  
-    modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
-}
+
 </script>
 			<?php
 				}
 			}
+		?>
+		<?php 
+		if(isset($_POST['solicitud'])){
+						
+		}
 		?>
 		<div class="corto" id="fondo-taes1"></div>
 		<footer id="contactos" style="background-color:black; color:white; text-align:center;">
