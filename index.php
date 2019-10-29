@@ -181,17 +181,18 @@ for (i = 0; i < acc.length; i++) {
 						<form  name="solicitud" method="post" action="">
 							<table>
 								<tr>
+									<td><input style="visibility:hidden" type="text" name="tae" required value=<?php echo '"'.$cad_taller[0].'"';?> readonly="readonly"></td>
+								</tr>
+								<tr>
 									<td>Número de Alumno:</td><td><input type="number" name="cod_alumno" minlength="9" maxlength="9" required></td>
 								</tr>
 								<tr>
 									<td style="text-align:right;">Nombre(s): </td><td><input type="text" name="nombres" required></td>
 								</tr>
 								<tr>
-									<td style="text-align:right;">Apellido Paterno: </td><td><input type="text" name="apellido_pa" required></td>
+									<td style="text-align:right;">Apellido(s): </td><td><input type="text" name="apellidos" required></td>
 								</tr>
-								<tr>
-									<td style="text-align:right;">Apellido Materno: </td><td><input type="text" name="apellido_ma"></td>
-								</tr>
+								
 								<tr>
 									<td>Número de teléfono:</td><td><input type="number" name="tel_alumno" maxlength="15" placeholder="opcional"></td>
 								</tr>
@@ -206,6 +207,25 @@ for (i = 0; i < acc.length; i++) {
 						</form>
 						</div>
 					</div>
+<?php //Aquí se añade la consulta a DB para añadir la inscripción del alumno a las solicitudes de los demás compañeros que desean ingresar al taller/TAE:
+if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombres']) and isset($_POST['apellidos']) ){
+	$_POST['cod_alumno'] = $alumn_num;
+	$_POST['nombres'] = $name;
+	$_POST['apellidos'] = $lastname;
+	$_POST['tel_alumno'] = $tel;
+	$_POST['correo_alumno'] = $mail;
+	$_POST['tae'] = $alumn_tae;
+	/*$add_to_pool = mysqli_query($enlace_db,"INSERT INTO `alumnos_pool`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
+		VALUES ('".$lastname."', 
+				'".$name."', 
+				'".$alumn_num."',
+				'".$tel."',
+				'".$mail."',
+				'".$alumn_tae."');") or die();*/
+				echo "Sí se hizo";
+		}
+		unset();
+		?>
 <script>
 // Get the modal
 var modal<?php echo "_".$cad_taller[1];?> = document.getElementById(<?php echo "'modal_".$cad_taller[1]."'";?>);
@@ -225,19 +245,12 @@ btn.onclick = function() {
 span.onclick = function() {
   modal<?php echo "_".$cad_taller[1];?>.style.display = "none";
 }
-
-// When the user clicks anywhere outside of the modal, close it
-
 </script>
 			<?php
 				}
 			}
 		?>
-		<?php 
-		if(isset($_POST['solicitud'])){
-						
-		}
-		?>
+
 		<div class="corto" id="fondo-taes1"></div>
 		<footer id="contactos" style="background-color:black; color:white; text-align:center;">
 				<div>

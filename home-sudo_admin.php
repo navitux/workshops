@@ -496,7 +496,7 @@ function closeNav() {
 	$new_tel = $_POST['add_alumno_tel'];
 	$new_alumn_num = $_POST['add_alumno_num'];
 	$new_alumn_tae = $_POST['add_alumno_tae'];
-	//echo $new_name." ".$new_lastname." ".$new_mail." ".$new_tel." ".$new_alumn_num." ".$new_alumn_tae;
+	
 	if(isset($new_name)){
 		mysqli_query($enlace_db,"INSERT INTO `alumnos_taes`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
 		VALUES ('".$new_lastname."', 

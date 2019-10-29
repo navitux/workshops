@@ -9,6 +9,9 @@ scroll-behavior:smooth;
 height:100%;
 font-family:Helvetica;
 }
+div{
+overflow:auto;
+}
 button::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
