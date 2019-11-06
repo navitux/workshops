@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-10-2019 a las 03:45:15
+-- Tiempo de generación: 06-11-2019 a las 10:09:32
 -- Versión del servidor: 10.3.17-MariaDB-0+deb10u1
 -- Versión de PHP: 7.3.9-1~deb10u1
 
@@ -32,7 +32,7 @@ CREATE TABLE `admins` (
   `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `nombre_real` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `admins`
@@ -41,6 +41,21 @@ CREATE TABLE `admins` (
 INSERT INTO `admins` (`usuario`, `password`, `nombre_real`) VALUES
 ('admingral', 'passCount3r', 'Prof. Administrador'),
 ('simple-admin', 'lockPAss', 'Usuario Normal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `alumnos_pool`
+--
+
+CREATE TABLE `alumnos_pool` (
+  `apellido` varchar(300) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(300) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `no_estudiante` int(10) NOT NULL,
+  `telefono` varchar(20) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `correo` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tae` varchar(300) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -95,7 +110,6 @@ CREATE TABLE `departamentos` (
 
 INSERT INTO `departamentos` (`nombre`, `nombre_formal`) VALUES
 ('depto_humm_soc', 'Departamento de Humanidades y Sociedad'),
-('depto_mates', 'Departamento de Matemática'),
 ('depto_salud_cnat', 'Departamento de Salud y Ciencias Naturales'),
 ('depto_sociotec', 'Departamento de Sociotecnologías'),
 ('testo', 'TESTO');

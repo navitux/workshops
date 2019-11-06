@@ -12,6 +12,7 @@ font-family:Helvetica;
 div{
 overflow:auto;
 }
+/* Para quitar el contorno punteado en firefox */
 button::-moz-focus-inner,
 input[type="reset"]::-moz-focus-inner,
 input[type="button"]::-moz-focus-inner,
@@ -19,7 +20,14 @@ input[type="submit"]::-moz-focus-inner,
 input[type="file"] > input[type="button"]::-moz-focus-inner {
         border: 1px dotted transparent;
 }
+/* Para quitar las flechas de los input tipo number en firefox */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
+input[type=number] { -moz-appearance:textfield; }
 /* empieza estilo de inicio */
 #inicio nav{
 overflow:auto;

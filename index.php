@@ -3,7 +3,8 @@
  <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link rel="stylesheet" href="index.css" media="all"/> 
+	 <link rel="stylesheet" href="index.css" media="all"/>
+	 <script src="jquery-3.4.1.min.js"></script>
 	<title>Plazas de TAE's Prepa 3</title>
  </head>
  <body>
@@ -11,10 +12,8 @@
 	<header id="inicio">
 		<nav id="myTopnav" class="topnav">
 		<img src="prepa3-logo.jpg" style="margin:5px;display:block; float:left; height:35px; width:30px;">
-		<a href="#home" class="active">Inicio</a>
-		<a href="#taes">Ver TAES por Departamento</a>
-		<a href="#contactos">Contacto</a>
-		<a href="login.php" id="login">¿Profesor?</a>
+		
+		<a href="login.php" id="login" title="Haga click aquí si es profesor o administrador de grupos">¿Profesor?</a>
 		</nav>
 	</header>
 
@@ -23,7 +22,7 @@
 	<!-- Departamentos de las TAEs -->
 	<section id="taes">
 		<p>Bienvenido</p>
-		<p>Puedes escoger un departamento para ver sus TAEs/Talleres correspondientes</p>
+		<p>Puedes escoger un departamento para ver sus TAEs/Talleres y sus vacantes</p>
 		<br>
 		<div style="text-align:center;">
 			<style>
@@ -104,7 +103,19 @@
 				$taller = mysqli_query($enlace_db,"SELECT nombre_formal,nombre_tae FROM ".$cad_dpt[1]." ORDER BY nombre_formal ASC") or die();
 				echo "<div class='panel'>";
 				while($cad_taller = mysqli_fetch_row($taller)){
-					echo "<button class='openmodal' id='btn-".$cad_taller[1]."'>".$cad_taller[0]."</button><br>";
+					//Aquí se obtiene el número de vacantes y las que quedan disponibles:
+					$total_vacantes = mysqli_query($enlace_db,"SELECT vacantes_totales FROM ".$cad_dpt[1]." WHERE nombre_formal ='".$cad_taller[0]."'");
+					$cad_total_vacantes = mysqli_fetch_row($total_vacantes);
+					$real_vacantes = mysqli_query($enlace_db,"SELECT COUNT(*) FROM alumnos_taes WHERE tae ='".$cad_taller[0]."'");
+					$cad_real_vacantes = mysqli_fetch_row($real_vacantes);
+					if($cad_total_vacantes[0] == '0' or '' or FALSE){
+						$cad_total_vacantes[0] = 'N/A';
+					}
+					// ------------------------------------------------------------------
+					echo "<button class='openmodal' id='btn-".$cad_taller[1]."' title='Las vacantes pueden variar con el tiempo o excederse según los criterios del profesor y/o la academia'>"
+					.$cad_taller[0].
+					"<br><b>Vacantes: ".$cad_total_vacantes[0]."</b>
+					<br><b>Inscritos: ".$cad_real_vacantes[0]."</b></button><br>";
 				}
 				echo "</div>";
 			}
@@ -207,24 +218,26 @@ for (i = 0; i < acc.length; i++) {
 						</form>
 						</div>
 					</div>
-<?php //Aquí se añade la consulta a DB para añadir la inscripción del alumno a las solicitudes de los demás compañeros que desean ingresar al taller/TAE:
+<?php 
+
+//Aquí se añade la consulta a DB para añadir la inscripción del alumno a las solicitudes de los demás compañeros que desean ingresar al taller/TAE:
 if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombres']) and isset($_POST['apellidos']) ){
-	$_POST['cod_alumno'] = $alumn_num;
-	$_POST['nombres'] = $name;
-	$_POST['apellidos'] = $lastname;
-	$_POST['tel_alumno'] = $tel;
-	$_POST['correo_alumno'] = $mail;
-	$_POST['tae'] = $alumn_tae;
-	/*$add_to_pool = mysqli_query($enlace_db,"INSERT INTO `alumnos_pool`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
+	$alumn_num = $_POST['cod_alumno'];
+	$name = $_POST['nombres'];
+	$lastname = $_POST['apellidos'];
+	$tel = $_POST['tel_alumno'];
+	$mail = $_POST['correo_alumno'];
+	$alumn_tae = $_POST['tae'];
+	$add_to_pool = mysqli_query($enlace_db,"INSERT INTO `alumnos_pool`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
 		VALUES ('".$lastname."', 
 				'".$name."', 
 				'".$alumn_num."',
 				'".$tel."',
 				'".$mail."',
-				'".$alumn_tae."');") or die();*/
-				echo "Sí se hizo";
-		}
-		unset();
+				'".$alumn_tae."');") or die();
+				echo "variables cargadas aún";
+	}
+	unset($name, $lastname, $tel, $mail, $alumn_tae, $alumn_num, $_POST['cod_alumno'], $_POST['nombres'], $_POST['apellidos'], $_POST['tel_alumno'], $_POST['correo_alumno']); 
 		?>
 <script>
 // Get the modal
