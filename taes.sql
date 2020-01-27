@@ -31,16 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `admins` (
   `usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_real` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  `nombre_real` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+);
 
 --
 -- Volcado de datos para la tabla `admins`
 --
 
 INSERT INTO `admins` (`usuario`, `password`, `nombre_real`) VALUES
-('admingral', 'passCount3r', 'Prof. Administrador'),
-('simple-admin', 'lockPAss', 'Usuario Normal');
+('admin', 'admin', 'Prof. Administrador'),
+('simple', 'simple', 'Usuario Normal Apellido');
 
 -- --------------------------------------------------------
 
@@ -109,10 +109,7 @@ CREATE TABLE `departamentos` (
 --
 
 INSERT INTO `departamentos` (`nombre`, `nombre_formal`) VALUES
-('depto_humm_soc', 'Departamento de Humanidades y Sociedad'),
-('depto_salud_cnat', 'Departamento de Salud y Ciencias Naturales'),
-('depto_sociotec', 'Departamento de Sociotecnologías'),
-('testo', 'TESTO');
+('depto_de_las_mates', 'Departamento Mates');
 
 -- --------------------------------------------------------
 
@@ -120,121 +117,11 @@ INSERT INTO `departamentos` (`nombre`, `nombre_formal`) VALUES
 -- Estructura de tabla para la tabla `depto_comm`
 --
 
-CREATE TABLE `depto_comm` (
+CREATE TABLE `depto_de_las_mates` (
   `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `depto_comm`
---
-
-INSERT INTO `depto_comm` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('frances_mat', 'Francés Matutino', 25),
-('frances_vesp', 'Francés Vespertino', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `depto_humm_soc`
---
-
-CREATE TABLE `depto_humm_soc` (
-  `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `depto_humm_soc`
---
-
-INSERT INTO `depto_humm_soc` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('proyectempr_mat', 'Proyecto Emprendedor Matutino', 25),
-('politic_mat', 'Liderazgo y Política en la Sociedad Mexicana Matutino', 25),
-('danzco_mat', 'Danza Contemporánea Matutino', 25),
-('danzfolc_mat', 'Danza Folclórica Matutino', 25),
-('teatro_mat', 'Expresión Teatral Matutino', 25),
-('musica_mat', 'Interpretación y Creación Musical Matutino', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `depto_mates`
---
-
-CREATE TABLE `depto_mates` (
-  `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `depto_mates`
---
-
-INSERT INTO `depto_mates` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('su_mates_mat', 'Creatividad en el Pensamiento Matemático Matutino', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `depto_salud_cnat`
---
-
-CREATE TABLE `depto_salud_cnat` (
-  `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `depto_salud_cnat`
---
-
-INSERT INTO `depto_salud_cnat` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('proteccivil_mat', 'Protección Civil Matutino', 25),
-('gestsalud_mat', 'Gestión de la Salud Matutino', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `depto_sociotec`
---
-
-CREATE TABLE `depto_sociotec` (
-  `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `depto_sociotec`
---
-
-INSERT INTO `depto_sociotec` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('electr_res_mat', 'Instalaciones Eléctricas Residenciales Matutino', 25),
-('robot_mat', 'Fundamentos de Electrónica y Robótica Matutino', 25);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `testo`
---
-
-CREATE TABLE `testo` (
-  `nombre_tae` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `nombre_formal` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `vacantes_totales` int(25) NOT NULL DEFAULT 25
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `testo`
---
-
-INSERT INTO `testo` (`nombre_tae`, `nombre_formal`, `vacantes_totales`) VALUES
-('Mic', 'MIB', 77);
+);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
