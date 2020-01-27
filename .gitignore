@@ -1,4 +1,4 @@
 *.txt
 *.csv
 *.ftp*
-n*
+*.sql

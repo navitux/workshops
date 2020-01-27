@@ -93,6 +93,7 @@ INSERT INTO `alumnos_taes` (`apellido`, `nombre`, `no_estudiante`, `telefono`, `
 ('Lucanor', 'Commonwealth', 111111111, '1461351313', 'comm@wealth.on', 'MIB'),
 ('Jao', 'Donchin', 123456789, '3325626556', 'donchinjao@git.io', 'MIB');
 
+
 -- --------------------------------------------------------
 
 --
