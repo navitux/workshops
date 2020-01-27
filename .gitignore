@@ -1,4 +1,7 @@
 *.txt
 test_field.php
 *.csv
+<<<<<<< HEAD
 *.ftp*
+=======
+>>>>>>> origin/master
