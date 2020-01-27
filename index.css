@@ -1,0 +1,199 @@
+﻿*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+outline: none;
+}
+html,body{
+scroll-behavior:smooth;
+height:100%;
+font-family:Helvetica;
+}
+div{
+overflow:auto;
+}
+/* Para quitar el contorno punteado en firefox */
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+        border: 1px dotted transparent;
+}
+/* Para quitar las flechas de los input tipo number en firefox */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+/* empieza estilo de inicio */
+#inicio nav{
+overflow:auto;
+background-color:#333;
+position:fixed;
+top:0;
+width:100%;
+z-index:2;
+}
+#inicio nav a{
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+#inicio #login{
+	float:right; 
+	font-size:120%;
+}
+
+#inicio nav a:hover{
+background:#ddd;
+color:black;
+}
+/* termina estilo de inicio */
+
+
+/* inicia estilo de home */
+#home{
+margin-top:7%;
+font-family:Helvetica;
+display:block;
+heigh:100%;	
+}
+.bg-image{
+background-image: url("prepa3-logo.jpg");
+	/* efecto blur
+	filter:blur(8px);
+	-webkit-filter: blur(8px);*/
+height:100%;
+background-attachment:fixed; /*se añade efecto "parallax" con esta linea*/
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.bg-text{
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(137,16,38, 0.9); /* Black w/opacity/see-through */
+color: white;
+font-weight: bold;
+border: 3px solid #f1f1f1;
+display:block;
+float:center;
+margin:20px;
+padding: 20px;
+text-align: center;
+}
+.bg-text a{
+	text-decoration:none;
+	color:white;
+}
+.bg-text a:hover{
+	background-color: rgba(0,0,0, 0.9);
+}
+
+/* termina estilo de home */
+	
+/* inicia estilo de taes */
+#taes{
+	display:block;
+	background-color:#750321;
+	width:100%;
+	height:auto;
+	color:white;
+}
+#taes p{
+	margin-top:4%;
+	text-align:center;
+	font-size:32px;
+}
+#taes div{
+	justify-content:center;
+	text-align:center;
+	overflow:auto;
+	
+}
+#taes a{
+	display:grid; 
+	float:center;
+	min-height:50%;
+	height:auto;
+	width:70%;
+	padding:16px;
+	text-align:center;
+	text-decoration:none;
+	color:black;
+	border: 1px solid black;
+	background-color:#eaeaea;/*gris para los botones*/
+	overflow:visible;
+	margin-left:15%;
+	margin-right:15%;
+}
+#taes a:hover{
+	background-color:#fbfbfb;/*gris para los botones*/
+}
+#taes a:active{
+	background-color:#c8c8c8;/*gris para los botones*/
+}
+
+/* termina estilo de taes */
+
+/*empiezan breves estilos generales*/
+body button{
+	padding:10px;
+	border:none;
+	background-color:#eae8e8;
+	border:1px solid black;
+}
+body button:hover{
+	background-color:#b7a8c4;
+}
+body button:active{
+	background-color:#740ed3;
+}
+section{
+	padding-top:4%;
+	
+	padding-bottom:2%;
+	width:100%;
+	height:auto;
+	min-height:400px;
+	display:block;
+	color:black;
+	background-color:white;
+}
+
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+.corto{
+height:300px;
+background-attachment:fixed;/*se añade efecto "parallax" esta linea linea*/
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+#fondo-taes1{
+background-image: url("p3_1.jpg");
+}
+#fondo-taes2{
+background-image: url("p3_3.jpg");
+}
+/*terminan breves estilos generales*/
