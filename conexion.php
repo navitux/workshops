@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿<?php
 //servidor, usuario de base de datos, contraseña del usuario, nombre de base de datos
 function conectar(){
@@ -18,7 +17,7 @@ function conectar(){
 	return $db;
 }
 //generar una sesión lo más rebuscada posible:
-function generarCodigo($longitud) { 
+function generarCodigo($longitud) {
 	$key = '';
 	$pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_#';
 	$max = strlen($pattern)-1;
@@ -27,7 +26,7 @@ function generarCodigo($longitud) {
 }
 $proof = "<br>varible de archivo conexion.php<br>";
 ?>
-=======
+
 ﻿<?php
 //servidor, usuario de base de datos, contraseña del usuario, nombre de base de datos
 function conectar(){
@@ -47,7 +46,7 @@ function conectar(){
 	return $db;
 }
 //generar una sesión lo más rebuscada posible:
-function generarCodigo($longitud) { 
+function generarCodigo($longitud) {
 	$key = '';
 	$pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-_#';
 	$max = strlen($pattern)-1;
@@ -56,4 +55,3 @@ function generarCodigo($longitud) {
 }
 $proof = "<br>varible de archivo conexion.php<br>";
 ?>
->>>>>>> origin/master
