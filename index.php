@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿<!DOCTYPE html>
+﻿<DOCTYPE! html>
 <html lang="es">
  <head>
 	<meta charset="UTF-8" />
@@ -13,13 +12,13 @@
 	<header id="inicio">
 		<nav id="myTopnav" class="topnav">
 		<img src="prepa3-logo.jpg" style="margin:5px;display:block; float:left; height:35px; width:30px;">
-		
+
 		<a href="login.php" id="login" title="Haga click aquí si es profesor o administrador de grupos">¿Profesor?</a>
 		</nav>
 	</header>
 
-	
-	
+
+
 	<!-- Departamentos de las TAEs -->
 	<section id="taes">
 		<p>Bienvenido</p>
@@ -44,7 +43,7 @@
 					background-color: #ccc;
 					outline: none;
 				}
-				
+
 				.openmodal{
 					background-color: #fff;
 					color: #444;
@@ -66,7 +65,7 @@
 					overflow: hidden;
 					color:black;
 				}
-				
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -91,7 +90,7 @@
   overflow:auto;
 }
 			</style>
-			<?php 
+			<?php
 			//obtener conexión con BD:
 			require("conexion.php");
 			$enlace_db = conectar();
@@ -132,7 +131,7 @@ for (i = 0; i < acc.length; i++) {
 	/* Toggle between adding and removing the "active" class,
 	to highlight the button that controls the panel */
 	this.classList.toggle("active");
-	
+
 	/* Toggle between hiding and showing the active panel */
 	var panel = this.nextElementSibling;
 	if (panel.style.display === "block") {
@@ -141,7 +140,7 @@ for (i = 0; i < acc.length; i++) {
 		panel.style.display = "block";
 	}
 	});
-} 
+}
 </script>
 		<!-- _______ -->
 		<!-- Opciones -->
@@ -151,14 +150,14 @@ for (i = 0; i < acc.length; i++) {
 		<!--en primer plano y que se cierra dando clic fuera de él -->
 		<!--o con un botón-->
 		<!-- __________ -->
-		
+
 		<?php
 		$dpt = mysqli_query($enlace_db,"SELECT nombre_formal,nombre FROM departamentos ORDER BY nombre_formal ASC") or die();
 		while($cad_dpt = mysqli_fetch_row($dpt)){
-				
+
 				$taller = mysqli_query($enlace_db,"SELECT nombre_formal,nombre_tae FROM ".$cad_dpt[1]." ORDER BY nombre_formal ASC") or die();
 				while($cad_taller = mysqli_fetch_row($taller)){
-					
+
 		?>
 					<script>
 					// Obtener modal
@@ -204,7 +203,7 @@ for (i = 0; i < acc.length; i++) {
 								<tr>
 									<td style="text-align:right;">Apellido(s): </td><td><input type="text" name="apellidos" required></td>
 								</tr>
-								
+
 								<tr>
 									<td>Número de teléfono:</td><td><input type="number" name="tel_alumno" maxlength="15" placeholder="opcional"></td>
 								</tr>
@@ -214,12 +213,12 @@ for (i = 0; i < acc.length; i++) {
 								<tr>
 									<td colspan="2"><button type="reset">limpiar campos</button></td>
 									<td colspan="2"><button type="submit">Enviar</button></td>
-								</tr> 
+								</tr>
 							</table>
 						</form>
 						</div>
 					</div>
-<?php 
+<?php
 
 //Aquí se añade la consulta a DB para añadir la inscripción del alumno a las solicitudes de los demás compañeros que desean ingresar al taller/TAE:
 if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombres']) and isset($_POST['apellidos']) ){
@@ -230,15 +229,15 @@ if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombre
 	$mail = $_POST['correo_alumno'];
 	$alumn_tae = $_POST['tae'];
 	$add_to_pool = mysqli_query($enlace_db,"INSERT INTO `alumnos_pool`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
-		VALUES ('".$lastname."', 
-				'".$name."', 
+		VALUES ('".$lastname."',
+				'".$name."',
 				'".$alumn_num."',
 				'".$tel."',
 				'".$mail."',
 				'".$alumn_tae."');") or die();
 				echo "variables cargadas aún";
 	}
-	unset($name, $lastname, $tel, $mail, $alumn_tae, $alumn_num, $_POST['cod_alumno'], $_POST['nombres'], $_POST['apellidos'], $_POST['tel_alumno'], $_POST['correo_alumno']); 
+	unset($name, $lastname, $tel, $mail, $alumn_tae, $alumn_num, $_POST['cod_alumno'], $_POST['nombres'], $_POST['apellidos'], $_POST['tel_alumno'], $_POST['correo_alumno']);
 		?>
 <script>
 // Get the modal
@@ -289,13 +288,13 @@ span.onclick = function() {
 	<header id="inicio">
 		<nav id="myTopnav" class="topnav">
 		<img src="prepa3-logo.jpg" style="margin:5px;display:block; float:left; height:35px; width:30px;">
-		
+
 		<a href="login.php" id="login" title="Haga click aquí si es profesor o administrador de grupos">¿Profesor?</a>
 		</nav>
 	</header>
 
-	
-	
+
+
 	<!-- Departamentos de las TAEs -->
 	<section id="taes">
 		<p>Bienvenido</p>
@@ -320,7 +319,7 @@ span.onclick = function() {
 					background-color: #ccc;
 					outline: none;
 				}
-				
+
 				.openmodal{
 					background-color: #fff;
 					color: #444;
@@ -342,7 +341,7 @@ span.onclick = function() {
 					overflow: hidden;
 					color:black;
 				}
-				
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -367,7 +366,7 @@ span.onclick = function() {
   overflow:auto;
 }
 			</style>
-			<?php 
+			<?php
 			//obtener conexión con BD:
 			require("conexion.php");
 			$enlace_db = conectar();
@@ -408,7 +407,7 @@ for (i = 0; i < acc.length; i++) {
 	/* Toggle between adding and removing the "active" class,
 	to highlight the button that controls the panel */
 	this.classList.toggle("active");
-	
+
 	/* Toggle between hiding and showing the active panel */
 	var panel = this.nextElementSibling;
 	if (panel.style.display === "block") {
@@ -417,7 +416,7 @@ for (i = 0; i < acc.length; i++) {
 		panel.style.display = "block";
 	}
 	});
-} 
+}
 </script>
 		<!-- _______ -->
 		<!-- Opciones -->
@@ -427,14 +426,14 @@ for (i = 0; i < acc.length; i++) {
 		<!--en primer plano y que se cierra dando clic fuera de él -->
 		<!--o con un botón-->
 		<!-- __________ -->
-		
+
 		<?php
 		$dpt = mysqli_query($enlace_db,"SELECT nombre_formal,nombre FROM departamentos ORDER BY nombre_formal ASC") or die();
 		while($cad_dpt = mysqli_fetch_row($dpt)){
-				
+
 				$taller = mysqli_query($enlace_db,"SELECT nombre_formal,nombre_tae FROM ".$cad_dpt[1]." ORDER BY nombre_formal ASC") or die();
 				while($cad_taller = mysqli_fetch_row($taller)){
-					
+
 		?>
 					<script>
 					// Obtener modal
@@ -480,7 +479,7 @@ for (i = 0; i < acc.length; i++) {
 								<tr>
 									<td style="text-align:right;">Apellido(s): </td><td><input type="text" name="apellidos" required></td>
 								</tr>
-								
+
 								<tr>
 									<td>Número de teléfono:</td><td><input type="number" name="tel_alumno" maxlength="15" placeholder="opcional"></td>
 								</tr>
@@ -490,12 +489,12 @@ for (i = 0; i < acc.length; i++) {
 								<tr>
 									<td colspan="2"><button type="reset">limpiar campos</button></td>
 									<td colspan="2"><button type="submit">Enviar</button></td>
-								</tr> 
+								</tr>
 							</table>
 						</form>
 						</div>
 					</div>
-<?php 
+<?php
 
 //Aquí se añade la consulta a DB para añadir la inscripción del alumno a las solicitudes de los demás compañeros que desean ingresar al taller/TAE:
 if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombres']) and isset($_POST['apellidos']) ){
@@ -506,15 +505,15 @@ if(isset($_POST['tae']) and isset($_POST['cod_alumno']) and isset($_POST['nombre
 	$mail = $_POST['correo_alumno'];
 	$alumn_tae = $_POST['tae'];
 	$add_to_pool = mysqli_query($enlace_db,"INSERT INTO `alumnos_pool`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
-		VALUES ('".$lastname."', 
-				'".$name."', 
+		VALUES ('".$lastname."',
+				'".$name."',
 				'".$alumn_num."',
 				'".$tel."',
 				'".$mail."',
 				'".$alumn_tae."');") or die();
 				echo "variables cargadas aún";
 	}
-	unset($name, $lastname, $tel, $mail, $alumn_tae, $alumn_num, $_POST['cod_alumno'], $_POST['nombres'], $_POST['apellidos'], $_POST['tel_alumno'], $_POST['correo_alumno']); 
+	unset($name, $lastname, $tel, $mail, $alumn_tae, $alumn_num, $_POST['cod_alumno'], $_POST['nombres'], $_POST['apellidos'], $_POST['tel_alumno'], $_POST['correo_alumno']);
 		?>
 <script>
 // Get the modal
@@ -550,4 +549,3 @@ span.onclick = function() {
 		</footer>
  </body>
 </html>
->>>>>>> origin/master

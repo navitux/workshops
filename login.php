@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿<DOCTYPE! html>
 <html lang="es">
  <head>
   <!--Este proyecto usará sqlite para manipular la base de datos de los estudiantes -->

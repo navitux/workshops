@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 ﻿<DOCTYPE! html>
-<?php 
+<?php
 date_default_timezone_set('America/Mexico_City');
 error_reporting(E_ALL & ~(E_NOTICE));
 session_start();
@@ -21,7 +20,7 @@ $_SESSION["timeout"] = time();
 <script language="JavaScript">
 	setTimeout("alert('se cierra sesión por inactividad')", 3300000);
     setTimeout("location.href='logout.php'", 3700000);
-  
+
 </script>
 </head>
 <body >
@@ -32,7 +31,7 @@ $time = 3600; // 1 hora en segundos
 if(isset($_SESSION["id"]))
 {
 	// verificamos si existe la sesión que se encarga del tiempo
-	// si existe, y el tiempo es mayor que una hora, expiramos la sesión 
+	// si existe, y el tiempo es mayor que una hora, expiramos la sesión
 	if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time)
 	{
 		unset($_SESSION["expire"]);
@@ -42,7 +41,7 @@ if(isset($_SESSION["id"]))
 	{
 		$_SESSION["expire"] = time();
     }
-} 
+}
 
 
 echo 'bienvenido<br>';
@@ -53,7 +52,7 @@ echo $_SESSION["id"]."<br>";
 </body>
 =======
 ﻿<DOCTYPE! html>
-<?php 
+<?php
 date_default_timezone_set('America/Mexico_City');
 error_reporting(E_ALL & ~(E_NOTICE));
 session_start();
@@ -74,7 +73,7 @@ $_SESSION["timeout"] = time();
 <script language="JavaScript">
 	setTimeout("alert('se cierra sesión por inactividad')", 3300000);
     setTimeout("location.href='logout.php'", 3700000);
-  
+
 </script>
 </head>
 <body >
@@ -85,7 +84,7 @@ $time = 3600; // 1 hora en segundos
 if(isset($_SESSION["id"]))
 {
 	// verificamos si existe la sesión que se encarga del tiempo
-	// si existe, y el tiempo es mayor que una hora, expiramos la sesión 
+	// si existe, y el tiempo es mayor que una hora, expiramos la sesión
 	if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time)
 	{
 		unset($_SESSION["expire"]);
@@ -95,7 +94,7 @@ if(isset($_SESSION["id"]))
 	{
 		$_SESSION["expire"] = time();
     }
-} 
+}
 
 
 echo 'bienvenido<br>';
@@ -104,5 +103,4 @@ echo $_SESSION["id"]."<br>";
  <p>administrador normal</p>
  <a href = "logout.php" style="text_decoration:none;">Sign Out</a>
 </body>
->>>>>>> origin/master
 </html>

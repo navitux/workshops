@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 ﻿<?php
 require("conexion.php");
-//Inicia una nueva sesión o reanuda la existente 
+//Inicia una nueva sesión o reanuda la existente
 session_start();
 //Eliminar cookies:
  if( isset($_COOKIE[$_SESSION["id"]]) )
@@ -11,7 +10,7 @@ session_start();
 //Destruye toda la información registrada de una sesión junto con las cookies:
 	unset($_COOKIE[$_SESSION["id"]]);
 	session_unset();
-    session_destroy(); 
+    session_destroy();
 //Cerrar la base de datos:
 	mysqli_close ($db);
 //Redirecciona a la página de login
@@ -20,7 +19,7 @@ session_start();
 =======
 ﻿<?php
 require("conexion.php");
-//Inicia una nueva sesión o reanuda la existente 
+//Inicia una nueva sesión o reanuda la existente
 session_start();
 //Eliminar cookies:
  if( isset($_COOKIE[$_SESSION["id"]]) )
@@ -30,11 +29,10 @@ session_start();
 //Destruye toda la información registrada de una sesión junto con las cookies:
 	unset($_COOKIE[$_SESSION["id"]]);
 	session_unset();
-    session_destroy(); 
+    session_destroy();
 //Cerrar la base de datos:
 	mysqli_close ($db);
 //Redirecciona a la página de login
     header('location: login.php');
 	exit();
->>>>>>> origin/master
 ?>

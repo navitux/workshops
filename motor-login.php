@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 ﻿<html lang="es">
- <head> 
+ <head>
   <!--Este proyecto usará sqlite para manipular la base de datos de los estudiantes -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +16,7 @@ $user_ingresado = $_POST["usuario"];
 $pass_ingresado = $_POST["password"];
 
 if(!empty($user_ingresado) OR !empty($pass_ingresado)) {
-	
+
 }else{
 	header("Location:login.php");
 }
@@ -65,7 +64,7 @@ mysqli_select_db($enlace_db ,$basedatos) or die('No se pudo seleccionar la base 
 /* ******************************************* */
 //comparar usuario ingrasado con el de registro de tabla:
 if (isset($user_ingresado) && !empty($user_ingresado)) {
-//1 Hacer una consulta a la base de datos en tu tabla antes de registrar la tabla            
+//1 Hacer una consulta a la base de datos en tu tabla antes de registrar la tabla
 $dato_usuario =  mysqli_query($enlace_db, "SELECT usuario FROM admins WHERE usuario = '".$user_ingresado."'");
 $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 
@@ -79,7 +78,7 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 			unset($error_data_base);
 			unset($error_usuario);
 			unset($error_pass);
-			
+
 			session_start();
 			$fecha = date('H:i:s_d-m-Y'); //OBTENER HORA Y FECHA SEGÚN FECHA HORARIA EN FORMATO.
 			$fecha_en_segundos = time(); //FECHA ABSOLUTA PERO EN SEGUNDOS
@@ -88,14 +87,14 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 			$_SESSION["id"] = $user_ingresado.generarCodigo(33).$_SESSION["fecha"];
 			$_SESSION["nombre"] = $user_ingresado;
 			setcookie($_SESSION["id"], 1, time() + (3600) );  // Crea una Cookie con un tiempo de vida de 1 hora
-			
-			
+
+
 			if($user_ingresado == 'admingral'){
 				header("Location:home-sudo_admin.php");
 			}else{
 			header("Location:home.php");
 			}
-			
+
 		}else{
 			header("Location:login.php?error_pass=true");
 			unset($user_ingresado);
@@ -110,11 +109,11 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 }
 /* ******************************************* */
 
-	/* Verifica si encontro al menos un registro..Contar el numero de filas 
+	/* Verifica si encontro al menos un registro..Contar el numero de filas
 	$duplicado = mysqli_num_rows($dato);
 	if($duplicado==1){
 	//Quiere decir que no se encontró un item igual a la del input entonces inserta
-	echo "usuario unico <br>"; 
+	echo "usuario unico <br>";
 	}else{
 	echo "<script> alert('Item duplicado') </script>";
 	unset($user_ingresado);}
@@ -124,7 +123,7 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 </html>
 =======
 ﻿<html lang="es">
- <head> 
+ <head>
   <!--Este proyecto usará sqlite para manipular la base de datos de los estudiantes -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -141,7 +140,7 @@ $user_ingresado = $_POST["usuario"];
 $pass_ingresado = $_POST["password"];
 
 if(!empty($user_ingresado) OR !empty($pass_ingresado)) {
-	
+
 }else{
 	header("Location:login.php");
 }
@@ -189,7 +188,7 @@ mysqli_select_db($enlace_db ,$basedatos) or die('No se pudo seleccionar la base 
 /* ******************************************* */
 //comparar usuario ingrasado con el de registro de tabla:
 if (isset($user_ingresado) && !empty($user_ingresado)) {
-//1 Hacer una consulta a la base de datos en tu tabla antes de registrar la tabla            
+//1 Hacer una consulta a la base de datos en tu tabla antes de registrar la tabla
 $dato_usuario =  mysqli_query($enlace_db, "SELECT usuario FROM admins WHERE usuario = '".$user_ingresado."'");
 $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 
@@ -203,7 +202,7 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 			unset($error_data_base);
 			unset($error_usuario);
 			unset($error_pass);
-			
+
 			session_start();
 			$fecha = date('H:i:s_d-m-Y'); //OBTENER HORA Y FECHA SEGÚN FECHA HORARIA EN FORMATO.
 			$fecha_en_segundos = time(); //FECHA ABSOLUTA PERO EN SEGUNDOS
@@ -212,14 +211,14 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 			$_SESSION["id"] = $user_ingresado.generarCodigo(33).$_SESSION["fecha"];
 			$_SESSION["nombre"] = $user_ingresado;
 			setcookie($_SESSION["id"], 1, time() + (3600) );  // Crea una Cookie con un tiempo de vida de 1 hora
-			
-			
+
+
 			if($user_ingresado == 'admingral'){
 				header("Location:home-sudo_admin.php");
 			}else{
 			header("Location:home.php");
 			}
-			
+
 		}else{
 			header("Location:login.php?error_pass=true");
 			unset($user_ingresado);
@@ -234,16 +233,14 @@ if($cadena_dato_usuario['usuario'] == $user_ingresado){
 }
 /* ******************************************* */
 
-	/* Verifica si encontro al menos un registro..Contar el numero de filas 
+	/* Verifica si encontro al menos un registro..Contar el numero de filas
 	$duplicado = mysqli_num_rows($dato);
 	if($duplicado==1){
 	//Quiere decir que no se encontró un item igual a la del input entonces inserta
-	echo "usuario unico <br>"; 
+	echo "usuario unico <br>";
 	}else{
 	echo "<script> alert('Item duplicado') </script>";
 	unset($user_ingresado);}
 	*/
-
 ?>
 </html>
->>>>>>> origin/master

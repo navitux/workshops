@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
+<DOCTYPE! html>
 <?php
 date_default_timezone_set('America/Mexico_City');
 error_reporting(E_ALL & ~(E_NOTICE));
@@ -32,16 +31,16 @@ $time = 3600; // 1 hora en segundos
 if(isset($_SESSION["id"]))
 {
 	//BUCLE PARA REVISAR CADA HORA SI HA EXPIRADO SESIÓN:
-	for($i=0;$i<=3600;$i++ ){	
+	for($i=0;$i<=3600;$i++ ){
 		// verificamos si existe la sesión que se encarga del tiempo
-		// si existe, y el tiempo es mayor que una hora, expiramos la sesión 
+		// si existe, y el tiempo es mayor que una hora, expiramos la sesión
 		if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time)
 		{
 			unset($_SESSION["expire"]);
 			unset($_SESSION["id"]);
 			header("Location: logout.php");
 		}else // si no existe la creamos
-	
+
 		$_SESSION["expire"] = time();
     }
 }
@@ -57,7 +56,7 @@ $dato_usuario =  mysqli_query($enlace_db, "SELECT nombre_real FROM admins WHERE 
 $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 ?>
 <nav>
- <p style="text-align:center;">Administrador General</p> 
+ <p style="text-align:center;">Administrador General</p>
  <a href = "logout.php" style="text-decoration:none; color:black;"><button style="float:right;" title="Cerrar sesión actual" href = "logout.php">Cerrar Sesión  <img src='cerrar-sesion.jpg' width='20px' height='20px' title='Cerrar sesión de usuario actual'/></button></a>
  <h1>Bienvenido <?php $cadena_dato_usuario["nombre_real"] = utf8_encode($cadena_dato_usuario["nombre_real"]); echo $cadena_dato_usuario["nombre_real"];?></h1>
  <p><b>Hora</b> y <b>Fecha</b> de ingreso (último acceso): <?php echo $_SESSION["fecha"]; ?></p>
@@ -92,7 +91,7 @@ function closeNav() {
 				<td>
 				<b>Eliminar Departamento:</b>
 				<select name="eliminar_depto">
-				<?php 
+				<?php
 				$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($lista_deptos);
 				if ($n > 0) {
@@ -143,7 +142,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Crear</button></td>
-			</tr> 
+			</tr>
 		</table>
 		</form>
 		<?php
@@ -161,7 +160,7 @@ function closeNav() {
 			`vacantes_totales` int(25) NOT NULL DEFAULT '25')");
 			 header("Location: home-sudo_admin.php");;
 			unset($vacantes_dept);
-		}	
+		}
 		?>
 		<!-- FOMRMULARIO PARA AÑADIR ALGÚN DEPARTAMENTO FIN -->
 		<!-- FOMRMULARIO PARA EDITAR LA INFORMACIÓN DE ALGÚN DEPARTAMENTO-->
@@ -176,7 +175,7 @@ function closeNav() {
 				<td style="text-align:right;">
 				Elige el Departamento a Editar:
 				<select name="editar_depto">
-				<?php 
+				<?php
 				$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($lista_deptos);
 				if ($n > 0) {
@@ -196,7 +195,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Cambiar Nombre</button></td>
-			</tr> 
+			</tr>
 		</table>
 		</form>
 		<?php
@@ -216,7 +215,7 @@ function closeNav() {
 		<!-- FOMRMULARIO PARA EDITAR LA INFORMACIÓN DE ALGÚN DEPARTAMENTO FIN-->
 	</div>
  </div>
- 
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Taller/TAE</button>
  <br><br>
@@ -238,15 +237,15 @@ function closeNav() {
 			<tr>
 				<hr>
 				<b>Añadir TAE a Departamento:</b>
-				
+
 				<form method='post' action=''>
 					<td>
 					<select name="depto_add_tae" >
 						<option id='depto_seleccionado' value=''>--Escoge un departamento para esta TAE--</option>
-						<?php 
+						<?php
 							$listar_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 							$n = mysqli_num_rows($listar_deptos);
-							echo "<div style='border:1px solid black;'>"; 
+							echo "<div style='border:1px solid black;'>";
 							if ($n > 0) {
 								while($cad_listar_deptos = mysqli_fetch_row($listar_deptos)){
 									echo "<hr/>";
@@ -260,14 +259,14 @@ function closeNav() {
 					<td><input name='add_tae' type='text' placeholder='Nombre de Nueva TAE' />
 					<input name='add_short_tae' type='text' placeholder='Nombre Corto TAE' />
 					<input name='add_no_tae' type='number' placeholder='Número de vacantes' /></td>
-		
+
 					<td colspan="2"><button type="reset">Limpiar Nombre</button></td>
 					<td colspan="2"><button type="submit">Añadir TAE</button></td>
 					<?php echo "</div>"; ?>
 				</form>
 				<?php
 				//LA SIG. LÍNEA ES PARA AÑADIR UNA TAE NUEVA A UN DEPARTAMENTO CORRESPONDIENTE:
-				
+
 				if(isset($_POST['add_tae']) AND isset($_POST['add_short_tae']) AND isset($_POST['depto_add_tae'])){
 					$nombre_obtenido_depto = $_POST['depto_add_tae'];
 					$nombre_obtenido_depto = utf8_decode($nombre_obtenido_depto);
@@ -275,10 +274,10 @@ function closeNav() {
 					$cad_obten_nombre_corto_depto = mysqli_fetch_row($obten_nombre_corto_depto);
 					$tae_added = $_POST['add_tae'];//Nombre Largo de TAE a añadir.
 					$tae_short_added = $_POST['add_short_tae'];//Nombre Corto de TAE a añadir.
-					$no_tae_add = $_POST['add_no_tae'];//Número de TAE añadida.	
+					$no_tae_add = $_POST['add_no_tae'];//Número de TAE añadida.
 					$tae_added = utf8_decode($tae_added);
 					$tae_short_added = utf8_decode($tae_short_added);
-					
+
 					if(isset($no_tae_add)){
 						mysqli_query($enlace_db,"INSERT INTO `".$cad_obten_nombre_corto_depto[0]."` (`nombre_tae`,`nombre_formal`,`vacantes_totales`) VALUES('".$tae_short_added."','".$tae_added."',".$no_tae_add.")");
 					}else{
@@ -312,9 +311,9 @@ function closeNav() {
 				//LA SIG. PORCIÓN DE CÓDIGO ES PARA COLOCAR UN SELECT DE CADA DEPARTAMENTO CON SUS TAE A CAMBIAR NOMBRE.
 				$listar_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($listar_deptos);
-				
+
 				if ($n > 0) {
-					echo "<form method='post' action=''>"; 
+					echo "<form method='post' action=''>";
 					echo "<select name='delete_tae'>";
 					echo "<option></option>";
 					while($cad_listar_deptos = mysqli_fetch_row($listar_deptos)){
@@ -335,7 +334,7 @@ function closeNav() {
 					echo "<button type='submit'>Eliminar TAE</button>";
 					echo "</form>";
 				}
-				
+
 				//EL SIGUIENTE BLOQUE IF SE EJECUTA PARA ELIMINAR UNA TAE:
 				if(isset($_POST['delete_tae'])){
 					$delete_sentence = $_POST['delete_tae'];
@@ -398,7 +397,7 @@ function closeNav() {
 				echo "<input name='reset_vacantes' type='text' placeholder='Nuevo Número de Vacantes' size='29'></input>";
 				echo "<button type='submit'>Cambiar Información de TAE</button>";
 				echo "</form>";
-				
+
 				$dato_sentence = $_POST['editar_nombre_tae'];
 				$rename_sentence = $_POST['rename_tae'];
 				$reset_taes_sentence = $_POST['reset_vacantes'];
@@ -423,12 +422,12 @@ function closeNav() {
 		<!-- FORMULARIO "EDITAR NOMBRE DE TAE" FIN-->
 	</div>
  </div>
- 
- 
+
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_alumno" onclick="document.getElementById('edit_alumno_modal').style.display='block'" type='button' style='border:none;' title="Añadir Alumno Nuevo o Modificar alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Alumno</button>
   <br><br>
- <div id="edit_alumno_modal" class="modal">	
+ <div id="edit_alumno_modal" class="modal">
 	<div class="modal-content" method="post" action="">
 	<!--AÑADIR ALUMNO-->
 	<hr/>
@@ -487,7 +486,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form><!--Aquí el espacio para procesar el formulario para añadir alumnos (uno a uno manualmente)-->
 	<?php
@@ -497,11 +496,11 @@ function closeNav() {
 	$new_tel = $_POST['add_alumno_tel'];
 	$new_alumn_num = $_POST['add_alumno_num'];
 	$new_alumn_tae = $_POST['add_alumno_tae'];
-	
+
 	if(isset($new_name)){
 		mysqli_query($enlace_db,"INSERT INTO `alumnos_taes`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
-		VALUES ('".$new_lastname."', 
-				'".$new_name."', 
+		VALUES ('".$new_lastname."',
+				'".$new_name."',
 				'".$new_alumn_num."',
 				'".$new_tel."',
 				'".$new_mail."',
@@ -521,7 +520,7 @@ function closeNav() {
 	unset($_POST['add_alumno_num']);
 	unset($_POST['add_alumno_tae']);
 	header("Location: home-sudo_admin.php");
-	
+
 	?>
 	<hr/>
 	<!--AÑADIR ALUMNO FIN-->
@@ -575,7 +574,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form>
 	<?php
@@ -638,7 +637,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Eliminar Alumno</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form>
 	<?php
@@ -657,7 +656,7 @@ function closeNav() {
 	<!--ELIMINAR ALUMNO FIN-->
 	</div>
  </div>
- 
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
  <!-- _________________________________________________________________________________________________________________________________________________ -->
@@ -671,8 +670,8 @@ function closeNav() {
 
 <section id="taes_detalles">
 
-<?php 
-	//se consultan solamente las tablas que empiezan con 'depto%' el símbolo '%' es wildcat o comodín pero sólo en SQL 
+<?php
+	//se consultan solamente las tablas que empiezan con 'depto%' el símbolo '%' es wildcat o comodín pero sólo en SQL
 	$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos") or die(mysqli_error());
 	/*este ciclo es posible gracias a la función que devuelve el número de filas devueltas:
 	y solamente se imprimen según su orden normal.*/
@@ -701,20 +700,20 @@ function closeNav() {
 
 			/*A continuación se nombran las taes/talleres correspondientes de cada departamento
 			para ello se obtiene el nombre corto de cada departamento por una consulta,
-			después de eso se consultará en la tabla del "nombre corto" de la TAE y 
+			después de eso se consultará en la tabla del "nombre corto" de la TAE y
 			por consiguiente se podrá ver cada departamento con TODAS sus taes/talleres*/
 			/*EN ESTAS SIGUIENTES LÍNEAS SE HACEN CONSULTAS SQL DEL NOMBRE "CORTO" DEL DEPARTAMENTO EN CADA ITERACIÓN Y LA SIGUIENTE ES PARA
 			CONSULTAR LAS taes/talleres (CON NOMBRE "FORMAL") DE CADA DEPARTAMENTO RESPECTIVAMENTE */
 			$nombre_corto_depto = mysqli_query($enlace_db, "SELECT nombre FROM departamentos WHERE nombre_formal = '".$depto[0]."'");
-			$cad_nombre_corto_depto = mysqli_fetch_row($nombre_corto_depto); 
-			
+			$cad_nombre_corto_depto = mysqli_fetch_row($nombre_corto_depto);
+
 			/*AQUÍ ES DONDE SE EMPIEZAN A MOSTRAR TODAS LAS taes/talleres DE CADA DEPARTAMENTO EN CADA ITERACIÓN (UNA ITERACIÓN POR CADA DEPTO., CLARO)*/
 			$lista_de_taes = mysqli_query($enlace_db,"SELECT nombre_formal, vacantes_totales FROM ".$cad_nombre_corto_depto[0]);
 			//El arreglo obtenido arriba ahora se imprime en pantalla a manera de: "Nombre de TAE" con "número de vacantes":
-			echo "<table border='0' bordercolor='#000000' cellspacing='1px' bordercolor='#000000' style='display:block; float:center;'> 
-					<tr> 
-						<th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> 
-						<th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:</th>  
+			echo "<table border='0' bordercolor='#000000' cellspacing='1px' bordercolor='#000000' style='display:block; float:center;'>
+					<tr>
+						<th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th>
+						<th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:</th>
 					</tr>";
 			while($cad_lista_de_taes = mysqli_fetch_row($lista_de_taes)){
 				//A continuación se mostrará la cantidad de alumnos registrados al lado de las vacantes establecidas.
@@ -726,11 +725,11 @@ function closeNav() {
 						<td>
 							<table border='0'>
 								<tr>
-									<th style='background-color:#0000FF; color:white;'>Apellido(s)</th> 
+									<th style='background-color:#0000FF; color:white;'>Apellido(s)</th>
 									<th style='background-color:#0000FF; color:white;'>Nombre(s)</th>
 									<th style='background-color:#0000FF; color:white;'>No. Estudiante</th>
 									<th style='background-color:#0000FF; color:white;'>Teléfono</th>
-									<th style='background-color:#0000FF; color:white;'>Correo</th> 
+									<th style='background-color:#0000FF; color:white;'>Correo</th>
 								</tr>";
 								$qss = mysqli_query($enlace_db,"SELECT apellido, nombre, no_estudiante, telefono, correo FROM alumnos_taes WHERE tae ='".$cad_lista_de_taes[0]."' ORDER BY apellido, nombre ASC");
 								while($cad_qss = mysqli_fetch_row($qss)){
@@ -803,16 +802,16 @@ $time = 3600; // 1 hora en segundos
 if(isset($_SESSION["id"]))
 {
 	//BUCLE PARA REVISAR CADA HORA SI HA EXPIRADO SESIÓN:
-	for($i=0;$i<=3600;$i++ ){	
+	for($i=0;$i<=3600;$i++ ){
 		// verificamos si existe la sesión que se encarga del tiempo
-		// si existe, y el tiempo es mayor que una hora, expiramos la sesión 
+		// si existe, y el tiempo es mayor que una hora, expiramos la sesión
 		if(isset($_SESSION["expire"]) && time() > $_SESSION["expire"] + $time)
 		{
 			unset($_SESSION["expire"]);
 			unset($_SESSION["id"]);
 			header("Location: logout.php");
 		}else // si no existe la creamos
-	
+
 		$_SESSION["expire"] = time();
     }
 }
@@ -828,7 +827,7 @@ $dato_usuario =  mysqli_query($enlace_db, "SELECT nombre_real FROM admins WHERE 
 $cadena_dato_usuario = mysqli_fetch_array($dato_usuario);
 ?>
 <nav>
- <p style="text-align:center;">Administrador General</p> 
+ <p style="text-align:center;">Administrador General</p>
  <a href = "logout.php" style="text-decoration:none; color:black;"><button style="float:right;" title="Cerrar sesión actual" href = "logout.php">Cerrar Sesión  <img src='cerrar-sesion.jpg' width='20px' height='20px' title='Cerrar sesión de usuario actual'/></button></a>
  <h1>Bienvenido <?php $cadena_dato_usuario["nombre_real"] = utf8_encode($cadena_dato_usuario["nombre_real"]); echo $cadena_dato_usuario["nombre_real"];?></h1>
  <p><b>Hora</b> y <b>Fecha</b> de ingreso (último acceso): <?php echo $_SESSION["fecha"]; ?></p>
@@ -863,7 +862,7 @@ function closeNav() {
 				<td>
 				<b>Eliminar Departamento:</b>
 				<select name="eliminar_depto">
-				<?php 
+				<?php
 				$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($lista_deptos);
 				if ($n > 0) {
@@ -914,7 +913,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Crear</button></td>
-			</tr> 
+			</tr>
 		</table>
 		</form>
 		<?php
@@ -932,7 +931,7 @@ function closeNav() {
 			`vacantes_totales` int(25) NOT NULL DEFAULT '25')");
 			 header("Location: home-sudo_admin.php");;
 			unset($vacantes_dept);
-		}	
+		}
 		?>
 		<!-- FOMRMULARIO PARA AÑADIR ALGÚN DEPARTAMENTO FIN -->
 		<!-- FOMRMULARIO PARA EDITAR LA INFORMACIÓN DE ALGÚN DEPARTAMENTO-->
@@ -947,7 +946,7 @@ function closeNav() {
 				<td style="text-align:right;">
 				Elige el Departamento a Editar:
 				<select name="editar_depto">
-				<?php 
+				<?php
 				$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($lista_deptos);
 				if ($n > 0) {
@@ -967,7 +966,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Cambiar Nombre</button></td>
-			</tr> 
+			</tr>
 		</table>
 		</form>
 		<?php
@@ -987,7 +986,7 @@ function closeNav() {
 		<!-- FOMRMULARIO PARA EDITAR LA INFORMACIÓN DE ALGÚN DEPARTAMENTO FIN-->
 	</div>
  </div>
- 
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_tae" onclick="document.getElementById('edit_tae_modal').style.display='block'" type='button' style='border:none;' title="Añadir TAE o modificar alguna"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Taller/TAE</button>
  <br><br>
@@ -1009,15 +1008,15 @@ function closeNav() {
 			<tr>
 				<hr>
 				<b>Añadir TAE a Departamento:</b>
-				
+
 				<form method='post' action=''>
 					<td>
 					<select name="depto_add_tae" >
 						<option id='depto_seleccionado' value=''>--Escoge un departamento para esta TAE--</option>
-						<?php 
+						<?php
 							$listar_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 							$n = mysqli_num_rows($listar_deptos);
-							echo "<div style='border:1px solid black;'>"; 
+							echo "<div style='border:1px solid black;'>";
 							if ($n > 0) {
 								while($cad_listar_deptos = mysqli_fetch_row($listar_deptos)){
 									echo "<hr/>";
@@ -1031,14 +1030,14 @@ function closeNav() {
 					<td><input name='add_tae' type='text' placeholder='Nombre de Nueva TAE' />
 					<input name='add_short_tae' type='text' placeholder='Nombre Corto TAE' />
 					<input name='add_no_tae' type='number' placeholder='Número de vacantes' /></td>
-		
+
 					<td colspan="2"><button type="reset">Limpiar Nombre</button></td>
 					<td colspan="2"><button type="submit">Añadir TAE</button></td>
 					<?php echo "</div>"; ?>
 				</form>
 				<?php
 				//LA SIG. LÍNEA ES PARA AÑADIR UNA TAE NUEVA A UN DEPARTAMENTO CORRESPONDIENTE:
-				
+
 				if(isset($_POST['add_tae']) AND isset($_POST['add_short_tae']) AND isset($_POST['depto_add_tae'])){
 					$nombre_obtenido_depto = $_POST['depto_add_tae'];
 					$nombre_obtenido_depto = utf8_decode($nombre_obtenido_depto);
@@ -1046,10 +1045,10 @@ function closeNav() {
 					$cad_obten_nombre_corto_depto = mysqli_fetch_row($obten_nombre_corto_depto);
 					$tae_added = $_POST['add_tae'];//Nombre Largo de TAE a añadir.
 					$tae_short_added = $_POST['add_short_tae'];//Nombre Corto de TAE a añadir.
-					$no_tae_add = $_POST['add_no_tae'];//Número de TAE añadida.	
+					$no_tae_add = $_POST['add_no_tae'];//Número de TAE añadida.
 					$tae_added = utf8_decode($tae_added);
 					$tae_short_added = utf8_decode($tae_short_added);
-					
+
 					if(isset($no_tae_add)){
 						mysqli_query($enlace_db,"INSERT INTO `".$cad_obten_nombre_corto_depto[0]."` (`nombre_tae`,`nombre_formal`,`vacantes_totales`) VALUES('".$tae_short_added."','".$tae_added."',".$no_tae_add.")");
 					}else{
@@ -1083,9 +1082,9 @@ function closeNav() {
 				//LA SIG. PORCIÓN DE CÓDIGO ES PARA COLOCAR UN SELECT DE CADA DEPARTAMENTO CON SUS TAE A CAMBIAR NOMBRE.
 				$listar_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos");
 				$n = mysqli_num_rows($listar_deptos);
-				
+
 				if ($n > 0) {
-					echo "<form method='post' action=''>"; 
+					echo "<form method='post' action=''>";
 					echo "<select name='delete_tae'>";
 					echo "<option></option>";
 					while($cad_listar_deptos = mysqli_fetch_row($listar_deptos)){
@@ -1106,7 +1105,7 @@ function closeNav() {
 					echo "<button type='submit'>Eliminar TAE</button>";
 					echo "</form>";
 				}
-				
+
 				//EL SIGUIENTE BLOQUE IF SE EJECUTA PARA ELIMINAR UNA TAE:
 				if(isset($_POST['delete_tae'])){
 					$delete_sentence = $_POST['delete_tae'];
@@ -1169,7 +1168,7 @@ function closeNav() {
 				echo "<input name='reset_vacantes' type='text' placeholder='Nuevo Número de Vacantes' size='29'></input>";
 				echo "<button type='submit'>Cambiar Información de TAE</button>";
 				echo "</form>";
-				
+
 				$dato_sentence = $_POST['editar_nombre_tae'];
 				$rename_sentence = $_POST['rename_tae'];
 				$reset_taes_sentence = $_POST['reset_vacantes'];
@@ -1194,12 +1193,12 @@ function closeNav() {
 		<!-- FORMULARIO "EDITAR NOMBRE DE TAE" FIN-->
 	</div>
  </div>
- 
- 
+
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <button id="edit_alumno" onclick="document.getElementById('edit_alumno_modal').style.display='block'" type='button' style='border:none;' title="Añadir Alumno Nuevo o Modificar alguno"><img src='editar.jpg' width='20px' height='20px'/>Añadir/Editar Alumno</button>
   <br><br>
- <div id="edit_alumno_modal" class="modal">	
+ <div id="edit_alumno_modal" class="modal">
 	<div class="modal-content" method="post" action="">
 	<!--AÑADIR ALUMNO-->
 	<hr/>
@@ -1258,7 +1257,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form><!--Aquí el espacio para procesar el formulario para añadir alumnos (uno a uno manualmente)-->
 	<?php
@@ -1268,11 +1267,11 @@ function closeNav() {
 	$new_tel = $_POST['add_alumno_tel'];
 	$new_alumn_num = $_POST['add_alumno_num'];
 	$new_alumn_tae = $_POST['add_alumno_tae'];
-	
+
 	if(isset($new_name)){
 		mysqli_query($enlace_db,"INSERT INTO `alumnos_taes`(`apellido`, `nombre`, `no_estudiante`, `telefono`, `correo`, `tae`)
-		VALUES ('".$new_lastname."', 
-				'".$new_name."', 
+		VALUES ('".$new_lastname."',
+				'".$new_name."',
 				'".$new_alumn_num."',
 				'".$new_tel."',
 				'".$new_mail."',
@@ -1292,7 +1291,7 @@ function closeNav() {
 	unset($_POST['add_alumno_num']);
 	unset($_POST['add_alumno_tae']);
 	header("Location: home-sudo_admin.php");
-	
+
 	?>
 	<hr/>
 	<!--AÑADIR ALUMNO FIN-->
@@ -1346,7 +1345,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Enviar</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form>
 	<?php
@@ -1409,7 +1408,7 @@ function closeNav() {
 			<tr>
 				<td colspan="2"><button type="reset">limpiar campos</button></td>
 				<td colspan="2"><button type="submit">Eliminar Alumno</button></td>
-			</tr> 
+			</tr>
 		</table>
 	</form>
 	<?php
@@ -1428,7 +1427,7 @@ function closeNav() {
 	<!--ELIMINAR ALUMNO FIN-->
 	</div>
  </div>
- 
+
  <!-- _________________________________________________________________________________________________________________________________________________ -->
  <a href="listaprime.php" target="_blank"><button id="ver_listas" type='button' style='border:none;' title="Solamente visualizar las listas de alumnos de cualquier TAE"><img src='tabla.jpg' width='20px' height='20px'/>Ver Solamente listas</button></a>
  <!-- _________________________________________________________________________________________________________________________________________________ -->
@@ -1442,8 +1441,8 @@ function closeNav() {
 
 <section id="taes_detalles">
 
-<?php 
-	//se consultan solamente las tablas que empiezan con 'depto%' el símbolo '%' es wildcat o comodín pero sólo en SQL 
+<?php
+	//se consultan solamente las tablas que empiezan con 'depto%' el símbolo '%' es wildcat o comodín pero sólo en SQL
 	$lista_deptos =  mysqli_query($enlace_db, "SELECT nombre_formal FROM departamentos") or die(mysqli_error());
 	/*este ciclo es posible gracias a la función que devuelve el número de filas devueltas:
 	y solamente se imprimen según su orden normal.*/
@@ -1472,20 +1471,20 @@ function closeNav() {
 
 			/*A continuación se nombran las taes/talleres correspondientes de cada departamento
 			para ello se obtiene el nombre corto de cada departamento por una consulta,
-			después de eso se consultará en la tabla del "nombre corto" de la TAE y 
+			después de eso se consultará en la tabla del "nombre corto" de la TAE y
 			por consiguiente se podrá ver cada departamento con TODAS sus taes/talleres*/
 			/*EN ESTAS SIGUIENTES LÍNEAS SE HACEN CONSULTAS SQL DEL NOMBRE "CORTO" DEL DEPARTAMENTO EN CADA ITERACIÓN Y LA SIGUIENTE ES PARA
 			CONSULTAR LAS taes/talleres (CON NOMBRE "FORMAL") DE CADA DEPARTAMENTO RESPECTIVAMENTE */
 			$nombre_corto_depto = mysqli_query($enlace_db, "SELECT nombre FROM departamentos WHERE nombre_formal = '".$depto[0]."'");
-			$cad_nombre_corto_depto = mysqli_fetch_row($nombre_corto_depto); 
-			
+			$cad_nombre_corto_depto = mysqli_fetch_row($nombre_corto_depto);
+
 			/*AQUÍ ES DONDE SE EMPIEZAN A MOSTRAR TODAS LAS taes/talleres DE CADA DEPARTAMENTO EN CADA ITERACIÓN (UNA ITERACIÓN POR CADA DEPTO., CLARO)*/
 			$lista_de_taes = mysqli_query($enlace_db,"SELECT nombre_formal, vacantes_totales FROM ".$cad_nombre_corto_depto[0]);
 			//El arreglo obtenido arriba ahora se imprime en pantalla a manera de: "Nombre de TAE" con "número de vacantes":
-			echo "<table border='0' bordercolor='#000000' cellspacing='1px' bordercolor='#000000' style='display:block; float:center;'> 
-					<tr> 
-						<th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th> 
-						<th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:</th>  
+			echo "<table border='0' bordercolor='#000000' cellspacing='1px' bordercolor='#000000' style='display:block; float:center;'>
+					<tr>
+						<th style='background-color:#FF55FF; color:white;'>Nombre de TAE</th>
+						<th style='background-color:#FF55FF; color:white;'>Vacantes / Alumnos Registrados:</th>
 					</tr>";
 			while($cad_lista_de_taes = mysqli_fetch_row($lista_de_taes)){
 				//A continuación se mostrará la cantidad de alumnos registrados al lado de las vacantes establecidas.
@@ -1497,11 +1496,11 @@ function closeNav() {
 						<td>
 							<table border='0'>
 								<tr>
-									<th style='background-color:#0000FF; color:white;'>Apellido(s)</th> 
+									<th style='background-color:#0000FF; color:white;'>Apellido(s)</th>
 									<th style='background-color:#0000FF; color:white;'>Nombre(s)</th>
 									<th style='background-color:#0000FF; color:white;'>No. Estudiante</th>
 									<th style='background-color:#0000FF; color:white;'>Teléfono</th>
-									<th style='background-color:#0000FF; color:white;'>Correo</th> 
+									<th style='background-color:#0000FF; color:white;'>Correo</th>
 								</tr>";
 								$qss = mysqli_query($enlace_db,"SELECT apellido, nombre, no_estudiante, telefono, correo FROM alumnos_taes WHERE tae ='".$cad_lista_de_taes[0]."' ORDER BY apellido, nombre ASC");
 								while($cad_qss = mysqli_fetch_row($qss)){
@@ -1540,4 +1539,3 @@ function closeNav() {
 
 </body>
 </html>
->>>>>>> origin/master
