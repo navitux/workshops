@@ -37,9 +37,9 @@ body button:active{
 	background-color:#740ed3;
 }
 #fondo-login{
-background-image: url("fondo_login.png");
-filter:blur(8px);
--webkit-filter: blur(3px);
+background-image: url("Mountain_landscape_2.svg");
+/*filter:blur(8px);
+-webkit-filter: blur(3px);*/
 height:100%;
 background-position: center;
 background-repeat: no-repeat;
